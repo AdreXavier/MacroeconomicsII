@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Estudos - Macroeconomia II</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .content-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .content-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .content-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .katex-display > .katex {
+            text-align: center;
+        }
+        .section-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .nav-item.active {
+            background-color: #eef2ff; /* indigo-50 */
+            color: #4f46e5; /* indigo-600 */
+            font-weight: 600;
+        }
+    </style>
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-md flex-shrink-0 flex flex-col">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-indigo-600">Macro II</h1>
+                <p class="text-sm text-gray-500">Guia de Estudos</p>
+            </div>
+            <nav id="sidebar-nav" class="mt-6 flex-1 px-2 space-y-1">
+                 <a href="#" onclick="showContent('home', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-home w-6 mr-3"></i>
+                    <span>Início</span>
+                </a>
+                <h2 class="px-4 pt-4 pb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Tópicos Teóricos</h2>
+                <a href="#" onclick="showContent('solow_sem_progresso', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-chart-line w-6 mr-3"></i>
+                    <span>Modelo de Solow (Básico)</span>
+                </a>
+                <a href="#" onclick="showContent('solow_com_progresso', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-cogs w-6 mr-3"></i>
+                    <span>Solow (com Tec.)</span>
+                </a>
+                <a href="#" onclick="showContent('resíduo_solow', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-calculator w-6 mr-3"></i>
+                    <span>Resíduo de Solow</span>
+                </a>
+                 <a href="#" onclick="showContent('expectativas', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-brain w-6 mr-3"></i>
+                    <span>Expectativas</span>
+                </a>
+                <a href="#" onclick="showContent('mercado_financeiro_expectativas', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-university w-6 mr-3"></i>
+                    <span>Mercado Financeiro e Exp.</span>
+                </a>
+                <a href="#" onclick="showContent('consumo_investimento_expectativas', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-shopping-cart w-6 mr-3"></i>
+                    <span>Consumo, Inv. e Exp.</span>
+                </a>
+                <a href="#" onclick="showContent('islm_expectativas', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-stream w-6 mr-3"></i>
+                    <span>Modelo IS-LM com Exp.</span>
+                </a>
+                <h2 class="px-4 pt-4 pb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Lista de Exercícios</h2>
+                <a href="#" onclick="showContent('exercicios', this)" class="nav-item flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors duration-200">
+                    <i class="fas fa-clipboard-list w-6 mr-3"></i>
+                    <span>Resolução da Lista 2</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content" class="flex-1 p-8 overflow-y-auto content-container bg-gray-50">
+            <!-- O conteúdo será injetado aqui pelo JavaScript -->
+        </main>
+    </div>
+
+    <script>
+        const contents = {
+            home: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Bem-vindo à sua Plataforma de Estudos de Macroeconomia II!</h2>
+                    <p class="text-lg mb-6">Este é seu espaço central para aprender e revisar os principais conceitos da disciplina. A teoria aqui apresentada é baseada no livro "Macroeconomia" de Olivier Blanchard (7ª edição), focando nos capítulos 10 a 16.</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="section-card bg-indigo-50 p-6 rounded-lg border border-indigo-200" onclick="navigateTo('solow_sem_progresso')">
+                            <i class="fas fa-chart-line text-3xl text-indigo-500 mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Crescimento a Longo Prazo</h3>
+                            <p class="text-gray-600">Entenda os modelos de Solow, a acumulação de capital e o papel do progresso tecnológico.</p>
+                        </div>
+                        <div class="section-card bg-purple-50 p-6 rounded-lg border border-purple-200" onclick="navigateTo('expectativas')">
+                            <i class="fas fa-brain text-3xl text-purple-500 mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">O Papel das Expectativas</h3>
+                            <p class="text-gray-600">Explore como as expectativas afetam os mercados financeiros, as decisões de consumo e o investimento.</p>
+                        </div>
+                        <div class="section-card bg-green-50 p-6 rounded-lg border border-green-200" onclick="navigateTo('islm_expectativas')">
+                           <i class="fas fa-stream text-3xl text-green-500 mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Modelo IS-LM com Expectativas</h3>
+                            <p class="text-gray-600">Aprofunde-se na versão moderna do modelo IS-LM e suas implicações para a política econômica.</p>
+                        </div>
+                        <div class="section-card bg-yellow-50 p-6 rounded-lg border border-yellow-200" onclick="navigateTo('exercicios')">
+                            <i class="fas fa-clipboard-list text-3xl text-yellow-500 mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Resolução da Lista de Exercícios</h3>
+                            <p class="text-gray-600">Confira as respostas detalhadas e justificadas para a Lista de Exercícios 2.</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            solow_sem_progresso: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Modelo de Solow sem Progresso Tecnológico</h2>
+                    <p class="text-lg mb-4">Baseado no <strong>Capítulo 11</strong> do livro de Blanchard, o modelo de crescimento de Solow foca no papel da acumulação de capital no crescimento econômico. Ele nos ajuda a entender como a taxa de poupança afeta o nível de produto por trabalhador no longo prazo.</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Interações entre Produto e Capital</h3>
+                    <p class="mb-4">O modelo se baseia em duas relações fundamentais:</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-4">
+                        <li><strong>O efeito do capital sobre o produto:</strong> A quantidade de capital na economia determina o produto que pode ser gerado. Isso é descrito pela função de produção agregada: \\(Y = F(K, N)\\). Assumindo retornos constantes de escala, podemos analisar a relação em termos per capita:</li>
+                    </ol>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ \\frac{Y}{N} = f\\left(\\frac{K}{N}\\right) $$
+                    </div>
+                    <p class="mb-4">Onde \\(\\frac{Y}{N}\\) é o produto por trabalhador e \\(\\frac{K}{N}\\) é o capital por trabalhador. A função \\(f\\) tem a propriedade de <strong>retornos decrescentes do capital</strong>: aumentos no capital por trabalhador levam a aumentos cada vez menores no produto por trabalhador.</p>
+                    
+                    <ol class="list-decimal list-inside space-y-2 mb-4" start="2">
+                        <li><strong>O efeito do produto sobre a acumulação de capital:</strong> O produto gerado determina a quantidade de poupança e, consequentemente, o investimento, que por sua vez aumenta o estoque de capital ao longo do tempo.</li>
+                    </ol>
+                    <p class="mb-2">A dinâmica da acumulação de capital é descrita por:</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ \\frac{K_{t+1}}{N} - \\frac{K_t}{N} = s \\cdot f\\left(\\frac{K_t}{N}\\right) - \\delta \\frac{K_t}{N} $$
+                    </div>
+                    <p class="mb-4">Onde <strong>s</strong> é a taxa de poupança (exógena e constante) e <strong>\\(\\delta\\)</strong> é a taxa de depreciação do capital. A equação diz que a variação do capital por trabalhador é igual ao investimento por trabalhador (poupança) menos a depreciação por trabalhador.</p>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">O Estado Estacionário</h3>
+                    <p class="mb-4">O estado estacionário é a condição de longo prazo da economia, onde o capital por trabalhador e o produto por trabalhador são constantes. Nesse ponto, o investimento é exatamente igual à depreciação, fazendo com que o estoque de capital por trabalhador não mude.</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ s \\cdot f\\left(\\frac{K^*}{N}\\right) = \\delta \\frac{K^*}{N} $$
+                    </div>
+                    <p>Onde \\(\\frac{K^*}{N}\\) é o nível de capital por trabalhador no estado estacionário.</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Implicações da Taxa de Poupança</h3>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li><strong>A taxa de poupança não afeta a taxa de crescimento de longo prazo</strong>, que neste modelo simples é zero. A economia para de crescer em termos per capita.</li>
+                        <li><strong>A taxa de poupança determina o nível de produto por trabalhador no longo prazo.</strong> Países com taxas de poupança mais altas terão níveis de produto por trabalhador mais altos no estado estacionário.</li>
+                        <li><strong>Um aumento na taxa de poupança</strong> leva a um período de crescimento temporário, à medida que a economia converge para um novo estado estacionário com maior produto por trabalhador.</li>
+                    </ol>
+                </div>
+            `,
+            solow_com_progresso: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Modelo de Solow com Progresso Tecnológico</h2>
+                    <p class="text-lg mb-4">Baseado no <strong>Capítulo 12</strong> de Blanchard, esta versão do modelo de Solow incorpora o progresso tecnológico, que é crucial para explicar o crescimento sustentado da renda per capita no longo prazo, algo que o modelo básico não conseguia fazer.</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">A Função de Produção com Tecnologia</h3>
+                    <p class="mb-4">O progresso tecnológico (\\(A\\)) é introduzido na função de produção, aumentando a eficiência do trabalho. O termo \\(AN\\) é chamado de <strong>trabalho efetivo</strong>.</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ Y = F(K, AN) $$
+                    </div>
+                    <p class="mb-4">Isso significa que o progresso tecnológico aumenta o produto que pode ser gerado com um mesmo número de trabalhadores. A análise agora é feita em termos de quantidades por <strong>trabalhador efetivo</strong> (\\(\\frac{Y}{AN}\\) e \\(\\frac{K}{AN}\\)).</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">A Dinâmica do Capital por Trabalhador Efetivo</h3>
+                    <p class="mb-2">A equação de acumulação de capital é modificada para incluir a taxa de progresso tecnológico (\\(g_A\\)) e a taxa de crescimento populacional (\\(g_N\\)). Para manter o capital por trabalhador efetivo (\\(\\frac{K}{AN}\\)) constante, o investimento deve cobrir:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>A depreciação do capital (\\(\\delta K\\)).</li>
+                        <li>O capital necessário para os novos trabalhadores (\\(g_N K\\)).</li>
+                        <li>O capital necessário para "equipar" os trabalhadores existentes com a nova tecnologia (\\(g_A K\\)).</li>
+                    </ul>
+                    <p class="mb-2">O investimento necessário para manter \\(\\frac{K}{AN}\\) constante é \\((\\delta + g_A + g_N)K\\). O estado estacionário é alcançado quando o investimento efetivo iguala o investimento necessário:</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ s \\cdot f\\left(\\frac{K}{AN}\\right) = (\\delta + g_A + g_N) \\frac{K}{AN} $$
+                    </div>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Crescimento no Estado Estacionário (Crescimento Equilibrado)</h3>
+                    <p class="mb-4">No estado estacionário deste modelo:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>O produto por trabalhador efetivo (\\(\\frac{Y}{AN}\\)) é constante.</li>
+                        <li>O <strong>produto por trabalhador</strong> (\\(\\frac{Y}{N}\\)) cresce à taxa de progresso tecnológico (\\(g_A\\)).</li>
+                        <li>O <strong>produto total</strong> (\\(Y\\)) cresce à taxa (\\(g_A + g_N\\)).</li>
+                    </ul>
+                    <p class="mt-4 font-semibold">Conclusão principal: No longo prazo, a taxa de crescimento do produto por trabalhador depende unicamente da taxa de progresso tecnológico. A taxa de poupança (\\(s\\)) afeta o <strong>nível</strong> do produto por trabalhador, mas não sua <strong>taxa de crescimento</strong> de longo prazo.</p>
+                </div>
+            `,
+             resíduo_solow: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Produtividade Total dos Fatores (Resíduo de Solow)</h2>
+                    <p class="text-lg mb-4">O Resíduo de Solow, também conhecido como Produtividade Total dos Fatores (PTF), é uma medida do progresso tecnológico. Ele representa a parte do crescimento do produto que não pode ser explicada pelo aumento na quantidade de insumos, como capital e trabalho.</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Cálculo e Interpretação</h3>
+                    <p class="mb-4">A ideia é decompor a taxa de crescimento do produto (\\(g_Y\\)) em duas partes: a contribuição do crescimento dos insumos (capital, \\(g_K\\), e trabalho, \\(g_N\\)) e a contribuição do progresso tecnológico (\\(g_A\\)).</p>
+                    <p class="mb-4">Dada uma função de produção Cobb-Douglas: \\(Y = A K^{\\alpha} N^{1-\\alpha}\\)</p>
+                    <p class="mb-4">Podemos mostrar que a taxa de crescimento do produto é:</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ g_Y = g_A + \\alpha g_K + (1-\\alpha) g_N $$
+                    </div>
+                    <p class="mb-4">Onde \\(\\alpha\\) é a participação do capital na renda e \\((1-\\alpha)\\) é a participação do trabalho. O Resíduo de Solow (\\(g_A\\)) é então calculado como:</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ g_A = g_Y - [\\alpha g_K + (1-\\alpha) g_N] $$
+                    </div>
+                    <p class="mt-4">Ele é um "resíduo" porque é a parte do crescimento do produto que sobra após contabilizarmos o crescimento dos insumos mensuráveis.</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Exemplo Prático</h3>
+                    <p class="mb-4">Se uma economia cresce 5% ao ano (\\(g_Y=0.05\\)), o capital cresce 4% (\\(g_K=0.04\\)), o trabalho cresce 1% (\\(g_N=0.01\\)), e a participação do capital na renda é de 1/3 (\\(\\alpha=0.33\\)), a contribuição do progresso tecnológico (PTF) seria:</p>
+                    <p>\\(g_A = 0.05 - [0.33 \\times 0.04 + (1-0.33) \\times 0.01]\\)</p>
+                    <p>\\(g_A = 0.05 - [0.0132 + 0.0067] = 0.05 - 0.0199 = 0.0301\\) ou aproximadamente <strong>3%</strong>.</p>
+                    <p class="mt-4">Isso significa que, dos 5% de crescimento do produto, cerca de 3% vieram de melhorias na eficiência e tecnologia, e não apenas do uso de mais máquinas ou mais trabalhadores.</p>
+                </div>
+            `,
+            expectativas: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Expectativas e Decisões Econômicas</h2>
+                    <p class="text-lg mb-4">Baseado nos <strong>Capítulos 14, 15 e 16</strong> de Blanchard, o estudo das expectativas é fundamental para entender a macroeconomia moderna. Decisões de consumo e investimento não dependem apenas das condições atuais, mas também do que empresas e consumidores esperam do futuro.</p>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Valor Presente Descontado Esperado</h3>
+                    <p class="mb-4">Este é o conceito central. Ele nos permite comparar valores monetários em diferentes pontos no tempo. O valor presente de um pagamento futuro depende da taxa de juros.</p>
+                    <p class="mb-2">O valor presente (\\(V_t\\)) de uma sequência de pagamentos esperados (\\(z^e_{t+1}, z^e_{t+2}, ...\\)) é:</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ V_t = \\frac{z^e_{t+1}}{1+i_t} + \\frac{z^e_{t+2}}{(1+i_t)(1+i^e_{t+1})} + ... $$
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 mt-4">
+                        <li>O valor presente depende <strong>positivamente</strong> dos pagamentos futuros esperados.</li>
+                        <li>O valor presente depende <strong>negativamente</strong> das taxas de juros atuais e futuras esperadas.</li>
+                    </ul>
+                </div>
+            `,
+            mercado_financeiro_expectativas: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Mercados Financeiros e Expectativas</h2>
+                    <p class="text-lg mb-4">As expectativas sobre o futuro determinam os preços dos ativos hoje, como títulos e ações. (Ref. Capítulo 14, Blanchard)</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Preços e Rendimentos dos Títulos</h3>
+                    <p class="mb-4">O preço de um título é o valor presente dos pagamentos que ele promete. A <strong>curva de rendimento</strong> (relação entre o rendimento e o vencimento de um título) nos dá uma ideia das expectativas do mercado sobre as taxas de juros futuras.</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Curva de rendimento inclinada para cima:</strong> O mercado espera que as taxas de juros de curto prazo aumentem no futuro.</li>
+                        <li><strong>Curva de rendimento inclinada para baixo:</strong> O mercado espera que as taxas de juros de curto prazo caiam no futuro.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Preços das Ações</h3>
+                    <p class="mb-4">O preço de uma ação é o valor presente dos dividendos futuros esperados. Ele é determinado por:</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                       $$ Q_t = \\frac{D^e_{t+1}}{1+r_t+x} + \\frac{D^e_{t+2}}{(1+r_t+x)(1+r^e_{t+1}+x)} + ... $$
+                    </div>
+                     <ul class="list-disc list-inside space-y-2 mt-4">
+                        <li><strong>Dividendos reais futuros esperados (\\(D^e\\)):</strong> Maiores dividendos esperados aumentam o preço da ação.</li>
+                        <li><strong>Taxas de juros reais futuras esperadas (\\(r^e\\)):</strong> Maiores taxas de juros diminuem o preço da ação (pois o desconto é maior).</li>
+                        <li><strong>Prêmio de risco das ações (\\(x\\)):</strong> Um prêmio de risco maior (maior incerteza) diminui o preço da ação.</li>
+                    </ul>
+                </div>
+            `,
+             consumo_investimento_expectativas: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Consumo, Investimento e Expectativas</h2>
+                     <p class="text-lg mb-4">(Ref. Capítulo 15, Blanchard)</p>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Decisão de Consumo</h3>
+                    <p class="mb-4">A teoria moderna do consumo (Hipótese do Ciclo de Vida/Renda Permanente) afirma que o consumo depende da <strong>riqueza total</strong> do indivíduo, que é a soma de:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Riqueza não humana:</strong> Ativos financeiros (ações, títulos) e imobiliários.</li>
+                        <li><strong>Riqueza humana:</strong> O valor presente da renda futura esperada do trabalho, líquida de impostos.</li>
+                    </ul>
+                    <p class="mt-4">Isso implica que o consumo é menos sensível a flutuações <strong>temporárias</strong> da renda e mais sensível a mudanças <strong>permanentes</strong>.</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Decisão de Investimento</h3>
+                    <p class="mb-4">Uma empresa investe se o valor presente dos lucros futuros esperados com o novo capital for maior que o custo do investimento. O investimento (\\(I\\)) depende de:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Rentabilidade:</strong> O valor presente dos lucros futuros esperados por unidade de capital.</li>
+                        <li><strong>Fluxo de Caixa:</strong> O lucro corrente. Empresas com lucro corrente elevado podem achar mais fácil financiar novos investimentos.</li>
+                    </ul>
+                    <p class="mt-4">O investimento tende a ser muito mais <strong>volátil</strong> que o consumo, pois as empresas podem ajustar seu estoque de capital de forma mais drástica em resposta a mudanças nas expectativas sobre as vendas permanentes.</p>
+                </div>
+            `,
+            islm_expectativas: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Modelo IS-LM com Expectativas</h2>
+                     <p class="text-lg mb-4">(Ref. Capítulo 16, Blanchard)</p>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">A Nova Curva IS</h3>
+                    <p class="mb-4">Quando introduzimos as expectativas, a relação IS é modificada. O gasto privado agregado (\\(A\\)) passa a depender não apenas das variáveis correntes, mas também das suas expectativas para o futuro:</p>
+                    <div class="bg-gray-100 p-4 rounded-md my-4 text-center text-lg katex-display">
+                        $$ Y = A(Y, T, r, Y'^e, T'^e, r'^e) + G $$
+                    </div>
+                    <p class="mb-4">Onde as variáveis com apóstrofo (') e 'e' sobrescrito representam valores futuros esperados.</p>
+                    <p class="mb-4"><strong>Principais Implicações:</strong></p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>A curva IS se torna mais inclinada:</strong> Uma mudança na taxa de juros <strong>corrente</strong> (\\(r\\)), sem alteração nas expectativas sobre as taxas futuras (\\(r'^e\\)), tem um efeito <strong>pequeno</strong> sobre o produto. Isso porque as decisões de investimento e consumo dependem de todo o percurso das taxas de juros, não apenas da taxa atual.</li>
+                        <li><strong>As expectativas deslocam a curva IS:</strong> Notícias que alteram as expectativas sobre o futuro (ex: maior produto futuro esperado \\(Y'^e\\) ou menores impostos futuros \\(T'^e\\)) deslocam a curva IS <strong>hoje</strong>. Uma expectativa otimista sobre o futuro aumenta o produto corrente.</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-indigo-600">Implicações para a Política Econômica</h3>
+                    <p class="mb-4">O poder da política macroeconômica depende crucialmente de como ela afeta as expectativas.</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Política Monetária:</strong> Um corte na taxa de juros hoje será muito mais eficaz se convencer os mercados de que as taxas permanecerão baixas por um tempo. Se o corte for visto como temporário, seu impacto será limitado.</li>
+                        <li><strong>Política Fiscal (Consolidação):</strong> Uma redução do déficit (aumento de T ou corte de G) pode, em teoria, ser expansionista. Se o anúncio convencer as pessoas de que a economia será mais saudável no futuro (com juros e impostos mais baixos), o aumento do gasto privado hoje (via expectativas) pode superar o efeito contracionista direto do corte de gastos. No entanto, isso depende da <strong>credibilidade</strong> e do <strong>contexto</strong>.</li>
+                    </ul>
+                </div>
+            `,
+            exercicios: `
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Resolução da Lista de Exercícios 2</h2>
+                    
+                    <!-- Questão 1 -->
+                    <div class="mb-8 border-b pb-8">
+                        <h3 class="text-2xl font-semibold mb-3">Questão 1</h3>
+                        <p class="mb-4 font-medium">(ANPEC 2015, 2017 e 2020) Segundo o modelo de crescimento de Solow, classifique as afirmativas como verdadeiras (V) ou falsas (F):</p>
+                        <div class="space-y-4">
+                            <p><strong>a) Quando a economia está no estado estacionário, o produto por trabalhador cresce à taxa do progresso tecnológico.</strong><br><span class="font-bold text-green-600">VERDADEIRO.</span> No modelo de Solow com progresso tecnológico, o estado estacionário é caracterizado pelo fato de o <em>produto por trabalhador efetivo</em> ser constante. Como o número de trabalhadores efetivos (AN) cresce à taxa \\(g_A\\), o produto por trabalhador (Y/N) também deve crescer a essa mesma taxa \\(g_A\\) para que a razão \\(\\frac{Y/N}{A}\\) se mantenha constante.</p>
+                            <p><strong>b) O progresso tecnológico depende da taxa de crescimento populacional.</strong><br><span class="font-bold text-red-600">FALSO.</span> No modelo de Solow padrão, tanto a taxa de crescimento populacional (\\(g_N\\)) quanto a taxa de progresso tecnológico (\\(g_A\\)) são tratadas como variáveis exógenas, ou seja, são dadas e não são explicadas pelo modelo. Uma não depende da outra dentro da estrutura do modelo.</p>
+                            <p><strong>c) A taxa de crescimento do produto por trabalhador no longo prazo é zero.</strong><br><span class="font-bold text-red-600">FALSO.</span> Esta afirmação é verdadeira apenas para o modelo de Solow <strong>sem</strong> progresso tecnológico. No modelo com progresso tecnológico, a taxa de crescimento do produto por trabalhador no longo prazo (no estado estacionário) é positiva e igual à taxa de progresso tecnológico (\\(g_A\\)).</p>
+                            <p><strong>d) Uma característica indesejável no modelo de Solow com progresso técnico é que ele não é capaz de gerar crescimento da renda per capita no estado estacionário.</strong><br><span class="font-bold text-red-600">FALSO.</span> Pelo contrário, a grande virtude do modelo de Solow com progresso técnico é justamente explicar o crescimento sustentado da renda per capita (ou produto por trabalhador) no longo prazo. Como visto no item (a), essa taxa de crescimento é igual a \\(g_A\\), que é positiva.</p>
+                            <p><strong>e) Quanto maior a taxa de poupança de uma economia, maior será a renda per capita em estado estacionário.</strong><br><span class="font-bold text-green-600">VERDADEIRO.</span> Uma taxa de poupança (\\(s\\)) mais elevada aumenta o nível do capital por trabalhador (efetivo) no estado estacionário. Como o produto por trabalhador (efetivo) é uma função crescente do capital por trabalhador (efetivo), um \\(s\\) mais alto leva a um nível de renda per capita maior no estado estacionário. A taxa de poupança afeta o <strong>nível</strong> da renda, mas não sua <strong>taxa de crescimento</strong> de longo prazo.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 2 -->
+                    <div class="mb-8 border-b pb-8">
+                        <h3 class="text-2xl font-semibold mb-3">Questão 2</h3>
+                        <p class="mb-4 font-medium">Calcule e interprete o Resíduo de Solow (PTF) para uma economia com função de produção \\(Y=K^{1/2}(AN)^{1/2}\\), \\(s=14\\%\\), \\(\\delta=8\\%\\), \\(g_N=2\\%\\) e \\(g_A=4\\%\\).</p>
+                        <p class="mb-4">O Resíduo de Solow, ou crescimento da Produtividade Total dos Fatores (PTF), é a parte do crescimento do produto não explicada pelo crescimento dos insumos (capital e trabalho). Para a função Cobb-Douglas \\(Y = A K^{\\alpha} N^{1-\\alpha}\\), a taxa de crescimento da PTF é \\(g_A\\). Na função de produção dada, \\(Y=K^{1/2}(AN)^{1/2}\\), podemos reescrevê-la como \\(Y=A^{1/2} K^{1/2} N^{1/2}\\). Esta não é a forma padrão. No entanto, o enunciado define "A" como o estado da tecnologia e sua taxa de crescimento como "taxa de progresso tecnológico", que é \\(g_A\\$. No modelo de Solow, o Resíduo de Solow (ou crescimento da PTF) é, por definição, a taxa de progresso tecnológico, \\(g_A\\).</p>
+                        <p class="mb-4">Portanto, os dados sobre poupança (\\(s\\)), depreciação (\\(\\delta\\)) e crescimento do trabalho (\\(g_N\\)) não são necessários para encontrar o valor do Resíduo de Solow, que é dado diretamente no enunciado.</p>
+                        <div class="bg-gray-100 p-4 rounded-md my-4">
+                            <p class="text-lg"><strong>Resíduo de Solow (crescimento da PTF) = \\(g_A = 4\\%\\) ao ano.</strong></p>
+                            <p class="mt-2"><strong>Interpretação:</strong> Isso significa que 4% do crescimento do produto total da economia a cada ano vem de melhorias na eficiência, inovação e tecnologia, e não do simples acúmulo de mais capital ou da contratação de mais trabalhadores.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 3 -->
+                    <div class="mb-8 border-b pb-8">
+                        <h3 class="text-2xl font-semibold mb-3">Questão 3</h3>
+                        <p class="mb-4 font-medium">(ANPEC 2024) Considere um modelo de Solow sem progresso tecnológico (\\(g_A=0\\)). Avalie as assertivas:</p>
+                        <div class="space-y-4">
+                           <p><strong>a) O nível de produto por trabalhador no estado estacionário não depende da participação dos salários na renda.</strong><br><span class="font-bold text-red-600">FALSO.</span> A participação dos salários na renda é \\((1-\\alpha)\\). O produto por trabalhador no estado estacionário é dado por \\(y^* = (s / (\\delta+n))^{{\\alpha}/({1-\\alpha})}\\). Como \\(\\alpha\\) (participação do capital) está na fórmula, a participação do trabalho \\((1-\\alpha)\\) também afeta o resultado. Uma menor participação do trabalho (maior \\(\\alpha\\)) leva a um maior produto por trabalhador no estado estacionário, pois indica que o capital é relativamente mais importante na produção.</p>
+                           <p><strong>b) No estado estacionário, a taxa de crescimento do produto é estritamente positiva e a taxa de crescimento do produto por trabalhador é nula.</strong><br><span class="font-bold text-green-600">VERDADEIRO.</span> No estado estacionário do modelo de Solow sem progresso tecnológico, o produto por trabalhador (Y/L) é constante, logo sua taxa de crescimento é zero. No entanto, como a população (e a força de trabalho, L) cresce à taxa \\(n > 0\\), o produto total (Y) também deve crescer à taxa \\(n\\) para que a razão Y/L se mantenha constante. Portanto, \\(g_Y = n > 0\\) e \\(g_y = 0\\).</p>
+                            <p><strong>c) Quanto maior for a taxa de poupança, maior será a taxa de crescimento do capital por trabalhador no estado estacionário.</strong><br><span class="font-bold text-red-600">FALSO.</span> No estado estacionário, por definição, o estoque de capital por trabalhador (\\(k = K/L\\)) é constante. Portanto, sua taxa de crescimento é zero, independentemente do valor da taxa de poupança. Uma taxa de poupança maior aumenta o <strong>nível</strong> de k no estado estacionário, mas não sua <strong>taxa de crescimento</strong>, que sempre será zero no estado estacionário.</p>
+                            <p><strong>d) Pode-se afirmar que um aumento marginal permanente na taxa de poupança reduz o consumo por trabalhador de forma igualmente permanente; ou seja, o consumo será mais baixo no curto prazo e no longo prazo.</strong><br><span class="font-bold text-red-600">FALSO.</span> Um aumento na taxa de poupança (\\(s\\)) sempre reduz o consumo no curto prazo. No entanto, no longo prazo, o efeito sobre o consumo depende se a economia está abaixo ou acima do nível de capital da "Regra de Ouro". Se a economia estiver abaixo do nível da Regra de Ouro (o que é geralmente o caso), um aumento em \\(s\\) levará a um consumo por trabalhador <strong>maior</strong> no novo estado estacionário. O consumo só cairia no longo prazo se a taxa de poupança já fosse excessivamente alta (acima do nível da Regra de Ouro).</p>
+                        </div>
+                    </div>
+                    
+                     <!-- Questão 4 a 8 -->
+                    <div class="mb-8">
+                         <h3 class="text-2xl font-semibold mb-3">Questões 4 a 8 - Modelo IS-LM com Expectativas</h3>
+                         <p class="mb-4">As questões a seguir são resolvidas com base no Modelo IS-LM com Expectativas, que você pode revisar na seção teórica correspondente.</p>
+                         
+                         <!-- Questão 4 -->
+                         <div class="p-4 bg-gray-50 rounded-lg mb-4">
+                            <p class="font-bold">4. Aumento dos juros futuros após corte da Selic:</p>
+                            <p><strong>a)</strong> O fato de os juros futuros subirem após um corte na Selic indica que o mercado não acreditava que o ciclo de cortes continuaria. Pelo contrário, o mercado passou a esperar uma <strong>alta</strong> dos juros no futuro, talvez por temer que o corte atual pudesse gerar pressões inflacionárias que exigiriam uma política monetária mais apertada adiante. A curva de rendimento, que reflete as expectativas, tornou-se mais inclinada.</p>
+                            <p><strong>b)</strong> As expectativas de juros reais futuros mais altos (\\(r'^e \\uparrow\\)) e, consequentemente, produto futuro menor (\\(Y'^e \\downarrow\\)), deslocam a <strong>curva IS para a esquerda hoje</strong>. O gasto privado (consumo e investimento) diminui hoje em antecipação a um futuro menos favorável. Isso leva a um <strong>produto atual (Y) menor</strong>. A taxa de juros atual (\\(r\\)) é determinada pela política do Banco Central no presente.</p>
+                        </div>
+                        
+                         <!-- Questão 5 -->
+                         <div class="p-4 bg-gray-50 rounded-lg mb-4">
+                            <p class="font-bold">5. Anúncio de corte de gastos com credibilidade:</p>
+                            <p>Essa é uma consolidação fiscal crível. O corte de gastos hoje (\\(G \\downarrow\\)) desloca a IS para a esquerda. No entanto, a credibilidade do plano leva a expectativas de um futuro melhor: impostos mais baixos (\\(T'^e \\downarrow\\)), juros mais baixos (\\(r'^e \\downarrow\\)) e produto maior (\\(Y'^e \\uparrow\\)) no médio prazo. Essas expectativas positivas <strong>deslocam a curva IS para a direita hoje</strong>. O efeito líquido sobre o produto atual (\\(Y\\)) é ambíguo: se o efeito das expectativas for forte o suficiente para superar o impacto negativo do corte de gastos atual, o produto pode até aumentar (uma consolidação fiscal expansionista).</p>
+                        </div>
+
+                         <!-- Questão 6 -->
+                         <div class="p-4 bg-gray-50 rounded-lg mb-4">
+                            <p class="font-bold">6. Expectativa de corte de juros e melhora no PIB:</p>
+                             <p>As expectativas são: juros futuros menores (\\(r'^e \\downarrow\\)) e PIB futuro melhor (contração menor, \\(Y'^e \\uparrow\\)). Ambas as expectativas são otimistas e <strong>deslocam a curva IS para a direita</strong>, aumentando a demanda agregada e o produto <strong>hoje</strong>. Diante desse cenário de demanda aquecida pelas expectativas, o Banco Central, para atingir a meta de inflação, pode precisar manter a taxa de juros atual mais alta do que manteria sem essas expectativas, ou até mesmo aumentá-la para conter a pressão inflacionária gerada pelo aumento da demanda.</p>
+                        </div>
+
+                        <!-- Questão 7 -->
+                         <div class="p-4 bg-gray-50 rounded-lg mb-4">
+                            <p class="font-bold">7. Manutenção da Selic com "comunicação dura":</p>
+                            <p>O Banco Central manteve a taxa de juros atual (\\(r\\)) inalterada, mas sinalizou que não hesitará em "retomar o ciclo de ajuste" (ou seja, aumentar os juros) se a inflação não cair. Isso afeta a expectativa sobre a taxa de juros futura (\\(r'^e\\)), que agora é <strong>maior ou menos propensa a cair</strong> do que se pensava antes. A expectativa de juros futuros mais altos tem um efeito contracionista hoje: desloca a <strong>curva IS para a esquerda</strong>, reduzindo o produto atual (\\(Y\\)). A taxa de juros atual (\\(r\\)) permanece a mesma, conforme a decisão do Copom.</p>
+                        </div>
+
+                        <!-- Questão 8 -->
+                         <div class="p-4 bg-gray-50 rounded-lg">
+                            <p class="font-bold">8. Anúncio de elevações futuras da taxa de juros:</p>
+                             <p><strong>a) Com credibilidade:</strong> O mercado acredita no anúncio, então a taxa de juros futura esperada (\\(r'^e\\)) aumenta. Isso desloca a <strong>curva IS para a esquerda</strong>. O produto atual (\\(Y\\)) diminui. A taxa de juros atual (\\(r\\)) permanece inalterada, conforme a decisão inicial.</p>
+                             <p><strong>b) Sem credibilidade:</strong> O mercado não acredita que o Banco Central irá de fato aumentar os juros no futuro. As expectativas (\\(r'^e\\)) não mudam. Como a taxa de juros atual (\\(r\\)) também não mudou, nada acontece. A curva IS não se desloca e o produto atual (\\(Y\\)) permanece o mesmo. A política de comunicação do Banco Central é ineficaz.</p>
+                        </div>
+
+                    </div>
+                </div>
+            `,
+        };
+
+        function showContent(id, element) {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = contents[id];
+            
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ],
+                    throwOnError: false
+                });
+            }
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+        
+        function navigateTo(id) {
+            const element = document.querySelector(`a[onclick*="${id}"]`);
+            showContent(id, element);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            navigateTo('home');
+        });
+
+    </script>
+</body>
+</html>
