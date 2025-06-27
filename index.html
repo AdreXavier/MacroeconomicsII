@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Scholes Quant - Insights Financeiros | UFSCAR & UFG</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Um preto um pouco mais suave */
+            color: #e5e7eb; /* cinza claro para textos */
+        }
+        .hero-bg {
+            background-image: url('https://placehold.co/1920x1080/0a0a0a/1f2937?text=BSQ');
+            background-size: cover;
+            background-position: center;
+        }
+        .glass-header {
+            background-color: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .accent-gold {
+            color: #f59e0b; /* Âmbar 500 */
+        }
+        .bg-accent-gold {
+            background-color: #f59e0b;
+        }
+        .border-accent-gold {
+            border-color: #f59e0b;
+        }
+        .hover\:bg-accent-gold-dark:hover {
+            background-color: #d97706; /* Âmbar 600 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Header / Navegação =========== -->
+    <header id="header" class="glass-header sticky top-0 z-50 border-b border-gray-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white">
+                Black Scholes <span class="accent-gold">Quant</span>
+            </a>
+
+            <!-- Menu Desktop -->
+            <ul class="hidden md:flex items-center space-x-8">
+                <li><a href="#insights" class="hover:accent-gold transition-colors duration-300">Insights</a></li>
+                <li><a href="#sobre" class="hover:accent-gold transition-colors duration-300">Sobre Nós</a></li>
+                <li><a href="#equipe" class="hover:accent-gold transition-colors duration-300">Equipe</a></li>
+                <li><a href="#contato" class="hover:accent-gold transition-colors duration-300">Contato</a></li>
+            </ul>
+
+            <!-- Botão de Contato -->
+            <a href="#contato" class="hidden md:inline-block bg-accent-gold text-gray-900 font-semibold px-5 py-2 rounded-md hover:bg-accent-gold-dark transition-all duration-300">
+                Fale Conosco
+            </a>
+
+            <!-- Botão do Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+
+        <!-- Menu Mobile (Oculto por padrão) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+            <ul class="flex flex-col items-center space-y-4 py-6">
+                <li><a href="#insights" class="hover:accent-gold transition-colors duration-300">Insights</a></li>
+                <li><a href="#sobre" class="hover:accent-gold transition-colors duration-300">Sobre Nós</a></li>
+                <li><a href="#equipe" class="hover:accent-gold transition-colors duration-300">Equipe</a></li>
+                <li><a href="#contato" class="hover:accent-gold transition-colors duration-300">Contato</a></li>
+                 <li>
+                    <a href="#contato" class="bg-accent-gold text-gray-900 font-semibold px-5 py-2 rounded-md hover:bg-accent-gold-dark transition-all duration-300">
+                        Fale Conosco
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========== Seção Herói =========== -->
+        <section class="hero-bg relative h-screen flex items-center justify-center">
+            <div class="absolute inset-0 bg-black/70"></div>
+            <div class="relative text-center text-white px-4 z-10">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4 leading-tight">
+                    Navegando a Complexidade dos Mercados com <span class="accent-gold">Análise Quantitativa</span>.
+                </h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
+                    A união da excelência acadêmica da UFSCAR e UFG para gerar insights e estratégias de ponta no mercado financeiro.
+                </p>
+                <div class="mt-8">
+                    <a href="#insights" class="bg-accent-gold text-gray-900 font-bold text-lg px-8 py-4 rounded-lg hover:bg-accent-gold-dark transition-all duration-300 shadow-lg shadow-yellow-500/20">
+                        Explore nossos Insights
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Seção de Insights / Notícias =========== -->
+        <section id="insights" class="py-20 lg:py-28 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tighter">Últimos Insights & Análises</h2>
+                    <p class="text-lg text-gray-400 mt-2 max-w-2xl mx-auto">Nossas perspectivas sobre os movimentos que moldam os mercados globais.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card de Notícia 1 -->
+                    <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-yellow-500/10 border border-gray-800 hover:border-gray-700 transition-all duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/111827/f59e0b?text=Mercado" alt="Imagem da notícia" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-accent-gold/10 text-accent-gold px-2 py-1 rounded-full">Macroeconomia</span>
+                            <h3 class="text-xl font-bold mt-4 mb-2 text-white">O Impacto da Política Monetária nos Mercados Emergentes</h3>
+                            <p class="text-gray-400 text-sm mb-4">Uma análise aprofundada sobre como as decisões dos bancos centrais globais afetam a volatilidade e o fluxo de capital.</p>
+                            <a href="#" class="font-semibold text-accent-gold hover:underline flex items-center">Leia Mais <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card de Notícia 2 -->
+                    <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-yellow-500/10 border border-gray-800 hover:border-gray-700 transition-all duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/111827/e5e7eb?text=Derivativos" alt="Imagem da notícia" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">Derivativos</span>
+                            <h3 class="text-xl font-bold mt-4 mb-2 text-white">Modelagem de Volatilidade Estocástica para Opções Exóticas</h3>
+                            <p class="text-gray-400 text-sm mb-4">Explorando modelos como Heston e SABR para precificação de instrumentos financeiros complexos.</p>
+                            <a href="#" class="font-semibold text-accent-gold hover:underline flex items-center">Leia Mais <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card de Notícia 3 -->
+                    <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-yellow-500/10 border border-gray-800 hover:border-gray-700 transition-all duration-300 transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/111827/4ade80?text=ESG" alt="Imagem da notícia" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-green-500/10 text-green-400 px-2 py-1 rounded-full">ESG & Quant</span>
+                            <h3 class="text-xl font-bold mt-4 mb-2 text-white">Análise Quantitativa de Fatores ESG na Performance de Portfólios</h3>
+                            <p class="text-gray-400 text-sm mb-4">Como a integração de dados ESG pode otimizar a relação risco-retorno de carteiras de investimento.</p>
+                            <a href="#" class="font-semibold text-accent-gold hover:underline flex items-center">Leia Mais <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+                    <!-- Adicione mais cards conforme necessário -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Seção Sobre Nós =========== -->
+        <section id="sobre" class="py-20 lg:py-28 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4">Onde a Academia Encontra o Mercado Financeiro</h2>
+                        <p class="text-gray-300 mb-4">
+                            A Black Scholes Quant nasceu da sinergia entre os programas de pós-graduação em Economia e Engenharia de Produção da <span class="font-bold text-white">Universidade Federal de São Carlos (UFSCAR)</span> e da <span class="font-bold text-white">Universidade Federal de Goiás (UFG)</span>.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            Nossa missão é aplicar o rigor científico e a inovação tecnológica da pesquisa acadêmica para resolver problemas complexos do mundo das finanças. Combinamos econometria, machine learning e otimização matemática para criar estratégias de investimento e gestão de risco superiores.
+                        </p>
+                        <a href="#contato" class="font-semibold text-accent-gold hover:underline flex items-center">
+                            Saiba mais sobre nossa pesquisa <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-10 lg:gap-16">
+                        <!-- Logos das Universidades -->
+                        <div class="text-center">
+                            <img src="https://placehold.co/200x100/e5e7eb/0a0a0a?text=Logo+UFSCAR" alt="Logo UFSCAR" class="h-16 mx-auto mb-2 grayscale opacity-70">
+                            <p class="font-semibold">UFSCAR</p>
+                        </div>
+                        <div class="text-4xl font-thin text-gray-600">&</div>
+                        <div class="text-center">
+                             <img src="https://placehold.co/200x100/e5e7eb/0a0a0a?text=Logo+UFG" alt="Logo UFG" class="h-16 mx-auto mb-2 grayscale opacity-70">
+                            <p class="font-semibold">UFG</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Seção da Equipe =========== -->
+        <section id="equipe" class="py-20 lg:py-28 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tighter">Conheça Nossos Quants</h2>
+                    <p class="text-lg text-gray-400 mt-2 max-w-2xl mx-auto">Mentes brilhantes da academia e do mercado, unidas por um objetivo comum.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
+                    <!-- Membro da Equipe 1 -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-700" src="https://placehold.co/200x200/4b5563/ffffff?text=Q1" alt="Foto Membro Equipe">
+                        <h4 class="text-lg font-bold text-white">Dr. Hélio Costa</h4>
+                        <p class="text-sm text-accent-gold">PhD, Chefe de Pesquisa</p>
+                    </div>
+                    <!-- Membro da Equipe 2 -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-700" src="https://placehold.co/200x200/4b5563/ffffff?text=Q2" alt="Foto Membro Equipe">
+                        <h4 class="text-lg font-bold text-white">Msc. Ana Clara Borges</h4>
+                        <p class="text-sm text-accent-gold">Analista Quantitativa Sênior</p>
+                    </div>
+                    <!-- Membro da Equipe 3 -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-700" src="https://placehold.co/200x200/4b5563/ffffff?text=Q3" alt="Foto Membro Equipe">
+                        <h4 class="text-lg font-bold text-white">Prof. Ricardo Mendes</h4>
+                        <p class="text-sm text-accent-gold">Especialista em Renda Fixa</p>
+                    </div>
+                    <!-- Membro da Equipe 4 -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-700" src="https://placehold.co/200x200/4b5563/ffffff?text=Q4" alt="Foto Membro Equipe">
+                        <h4 class="text-lg font-bold text-white">Juliana Teixeira</h4>
+                        <p class="text-sm text-accent-gold">Analista de Machine Learning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Seção de Contato =========== -->
+        <section id="contato" class="py-20 lg:py-28 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tighter">Entre em Contato</h2>
+                    <p class="text-lg text-gray-400 mt-2 max-w-2xl mx-auto">Interessado em nossas estratégias, parcerias acadêmicas ou oportunidades de carreira?</p>
+                </div>
+
+                <div class="max-w-2xl mx-auto">
+                    <form action="#" method="POST">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nome</label>
+                                <input type="text" name="name" id="name" class="w-full bg-gray-800 border-gray-700 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition duration-300" placeholder="Seu nome completo">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <input type="email" name="email" id="email" class="w-full bg-gray-800 border-gray-700 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition duration-300" placeholder="seu.email@exemplo.com">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                             <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Mensagem</label>
+                             <textarea name="message" id="message" rows="5" class="w-full bg-gray-800 border-gray-700 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition duration-300" placeholder="Como podemos ajudar?"></textarea>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="bg-accent-gold text-gray-900 font-bold text-lg px-10 py-3 rounded-lg hover:bg-accent-gold-dark transition-all duration-300 shadow-lg shadow-yellow-500/20">
+                                Enviar Mensagem
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========== Footer =========== -->
+    <footer class="bg-black border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid lg:grid-cols-4 gap-8">
+                <!-- Coluna 1: Logo e Descrição -->
+                <div class="col-span-1 lg:col-span-1">
+                     <h3 class="text-xl font-bold tracking-tighter text-white">Black Scholes <span class="accent-gold">Quant</span></h3>
+                     <p class="text-gray-400 mt-4 text-sm">Análise quantitativa de ponta, unindo academia e mercado financeiro.</p>
+                     <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="twitter"></i></a>
+                     </div>
+                </div>
+                <!-- Coluna 2: Links Rápidos -->
+                <div>
+                    <h4 class="font-semibold tracking-wider uppercase text-gray-400">Navegação</h4>
+                    <ul class="mt-4 space-y-3">
+                        <li><a href="#insights" class="text-gray-300 hover:text-white transition-colors">Insights</a></li>
+                        <li><a href="#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre Nós</a></li>
+                        <li><a href="#equipe" class="text-gray-300 hover:text-white transition-colors">Equipe</a></li>
+                        <li><a href="#contato" class="text-gray-300 hover:text-white transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+                 <!-- Coluna 3: Legal -->
+                 <div>
+                    <h4 class="font-semibold tracking-wider uppercase text-gray-400">Legal</h4>
+                    <ul class="mt-4 space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                 <!-- Coluna 4: Parceria -->
+                 <div>
+                    <h4 class="font-semibold tracking-wider uppercase text-gray-400">Em Parceria com</h4>
+                    <ul class="mt-4 space-y-3">
+                        <li class="font-medium text-gray-300">UFSCAR</li>
+                        <li class="font-medium text-gray-300">UFG</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2025 Black Scholes Quant. Todos os direitos reservados. Este site é para fins ilustrativos e não representa uma oferta de investimento.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Inicializa Lucide Icons
+        lucide.createIcons();
+
+        // Lógica para o menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuButton.querySelector('i');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                mobileMenuIcon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons(); // Recria o ícone para refletir a mudança
+        });
+
+        // Fecha o menu mobile ao clicar em um link
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // Animação de header ao rolar
+        const header = document.getElementById('header');
+        window.onscroll = function() {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        };
+
+    </script>
+</body>
+</html>
