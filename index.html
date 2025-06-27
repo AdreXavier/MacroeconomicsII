@@ -20,7 +20,7 @@
         ::-webkit-scrollbar-thumb:hover { background: #58a6ff; }
 
         /* Estilo para links de navegação ativos */
-        .nav-item.active {
+        .nav-item.active, .dropdown-button.active {
             color: #ffffff;
             background-color: #1f6feb;
         }
@@ -49,34 +49,51 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <!-- Título Principal -->
-                <a href="#" onclick="showContent('home', this, true)" class="text-lg font-bold text-blue-400 hover:text-blue-500 transition-colors">
+                <a href="#" onclick="showContent('home', this, 'home')" class="text-lg font-bold text-blue-400 hover:text-blue-500 transition-colors">
                    Macroeconomia 2 - UFSCar
                 </a>
 
                 <!-- Navegação Desktop -->
-                <nav class="hidden md:flex items-center space-x-2">
-                    <a href="#" onclick="showContent('home', this, true)" class="nav-item home-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md transition-colors">Início</a>
+                <nav class="hidden md:flex items-center space-x-1">
+                    <a href="#" onclick="showContent('home', this, 'home')" class="nav-item home-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md transition-colors">Início</a>
 
                     <!-- Dropdown de Tópicos -->
-                    <div class="relative" id="topics-dropdown-container">
-                        <button id="topics-dropdown-button" class="nav-item topics-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md flex items-center transition-colors">
+                    <div class="relative">
+                        <button id="topics-dropdown-button" class="dropdown-button nav-item topics-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md flex items-center transition-colors">
                             Tópicos Teóricos
                             <i class="fas fa-chevron-down ml-2 text-xs"></i>
                         </button>
                         <div id="topics-dropdown-menu" class="absolute right-0 mt-2 w-56 bg-[#161b22] border border-[#30363d] rounded-md shadow-lg hidden ring-1 ring-black ring-opacity-5">
                            <div class="py-1">
-                                <a href="#" onclick="showContent('solow_sem_progresso', this)" class="dropdown-item solow_sem_progresso-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Modelo de Solow (Básico)</a>
-                                <a href="#" onclick="showContent('solow_com_progresso', this)" class="dropdown-item solow_com_progresso-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Solow (com Tec.)</a>
-                                <a href="#" onclick="showContent('resíduo_solow', this)" class="dropdown-item resíduo_solow-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Resíduo de Solow</a>
-                                <a href="#" onclick="showContent('expectativas', this)" class="dropdown-item expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Expectativas</a>
-                                <a href="#" onclick="showContent('mercado_financeiro_expectativas', this)" class="dropdown-item mercado_financeiro_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Mercado Financeiro e Exp.</a>
-                                <a href="#" onclick="showContent('consumo_investimento_expectativas', this)" class="dropdown-item consumo_investimento_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Consumo, Inv. e Exp.</a>
-                                <a href="#" onclick="showContent('islm_expectativas', this)" class="dropdown-item islm_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Modelo IS-LM com Exp.</a>
+                                <a href="#" onclick="showContent('solow_sem_progresso', this, 'topics')" class="dropdown-item solow_sem_progresso-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Modelo de Solow (Básico)</a>
+                                <a href="#" onclick="showContent('solow_com_progresso', this, 'topics')" class="dropdown-item solow_com_progresso-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Solow (com Tec.)</a>
+                                <a href="#" onclick="showContent('resíduo_solow', this, 'topics')" class="dropdown-item resíduo_solow-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Resíduo de Solow</a>
+                                <a href="#" onclick="showContent('expectativas', this, 'topics')" class="dropdown-item expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Expectativas</a>
+                                <a href="#" onclick="showContent('mercado_financeiro_expectativas', this, 'topics')" class="dropdown-item mercado_financeiro_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Mercado Financeiro e Exp.</a>
+                                <a href="#" onclick="showContent('consumo_investimento_expectativas', this, 'topics')" class="dropdown-item consumo_investimento_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Consumo, Inv. e Exp.</a>
+                                <a href="#" onclick="showContent('islm_expectativas', this, 'topics')" class="dropdown-item islm_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Modelo IS-LM com Exp.</a>
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" onclick="showContent('exercicios', this, 'exercicios')" class="nav-item exercicios-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md transition-colors">Lista 2 (Resolvida)</a>
+
+                    <!-- Dropdown de Simulados -->
+                    <div class="relative">
+                        <button id="simulados-dropdown-button" class="dropdown-button nav-item simulados-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md flex items-center transition-colors">
+                            Simulados
+                            <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        </button>
+                        <div id="simulados-dropdown-menu" class="absolute right-0 mt-2 w-48 bg-[#161b22] border border-[#30363d] rounded-md shadow-lg hidden ring-1 ring-black ring-opacity-5">
+                           <div class="py-1">
+                                <a href="#" onclick="showContent('simulado1', this, 'simulados')" class="dropdown-item simulado1-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Simulado 1</a>
+                                <a href="#" onclick="showContent('simulado2', this, 'simulados')" class="dropdown-item simulado2-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Simulado 2</a>
+                                <a href="#" onclick="showContent('simulado3', this, 'simulados')" class="dropdown-item simulado3-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Simulado 3</a>
                            </div>
                         </div>
                     </div>
 
-                    <a href="#" onclick="showContent('exercicios', this, true)" class="nav-item exercicios-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md transition-colors">Resolução da Lista 2</a>
+                    <a href="#" onclick="showContent('glossario', this, 'glossario')" class="nav-item glossario-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md transition-colors">Glossário</a>
                 </nav>
 
                 <!-- Botão do Menu Mobile -->
@@ -89,17 +106,23 @@
         </div>
         <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#161b22] border-t border-[#30363d]">
-            <a href="#" onclick="showContent('home', this, true)" class="nav-item home-link block px-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Início</a>
+            <a href="#" onclick="showContent('home', this, 'home')" class="nav-item home-link block px-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Início</a>
              <h3 class="px-4 pt-4 pb-2 text-xs font-semibold text-gray-500 uppercase">Tópicos Teóricos</h3>
-             <a href="#" onclick="showContent('solow_sem_progresso', this)" class="dropdown-item solow_sem_progresso-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Modelo de Solow (Básico)</a>
-             <a href="#" onclick="showContent('solow_com_progresso', this)" class="dropdown-item solow_com_progresso-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Solow (com Tec.)</a>
-             <a href="#" onclick="showContent('resíduo_solow', this)" class="dropdown-item resíduo_solow-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Resíduo de Solow</a>
-             <a href="#" onclick="showContent('expectativas', this)" class="dropdown-item expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Expectativas</a>
-             <a href="#" onclick="showContent('mercado_financeiro_expectativas', this)" class="dropdown-item mercado_financeiro_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Mercado Financeiro e Exp.</a>
-             <a href="#" onclick="showContent('consumo_investimento_expectativas', this)" class="dropdown-item consumo_investimento_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Consumo, Inv. e Exp.</a>
-             <a href="#" onclick="showContent('islm_expectativas', this)" class="dropdown-item islm_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Modelo IS-LM com Exp.</a>
+             <a href="#" onclick="showContent('solow_sem_progresso', this, 'topics')" class="dropdown-item solow_sem_progresso-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Modelo de Solow (Básico)</a>
+             <a href="#" onclick="showContent('solow_com_progresso', this, 'topics')" class="dropdown-item solow_com_progresso-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Solow (com Tec.)</a>
+             <a href="#" onclick="showContent('resíduo_solow', this, 'topics')" class="dropdown-item resíduo_solow-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Resíduo de Solow</a>
+             <a href="#" onclick="showContent('expectativas', this, 'topics')" class="dropdown-item expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Expectativas</a>
+             <a href="#" onclick="showContent('mercado_financeiro_expectativas', this, 'topics')" class="dropdown-item mercado_financeiro_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Mercado Financeiro e Exp.</a>
+             <a href="#" onclick="showContent('consumo_investimento_expectativas', this, 'topics')" class="dropdown-item consumo_investimento_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Consumo, Inv. e Exp.</a>
+             <a href="#" onclick="showContent('islm_expectativas', this, 'topics')" class="dropdown-item islm_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Modelo IS-LM com Exp.</a>
             <h3 class="px-4 pt-4 pb-2 text-xs font-semibold text-gray-500 uppercase">Lista de Exercícios</h3>
-            <a href="#" onclick="showContent('exercicios', this, true)" class="nav-item exercicios-link block px-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Resolução da Lista 2</a>
+            <a href="#" onclick="showContent('exercicios', this, 'exercicios')" class="nav-item exercicios-link block px-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Lista 2 (Resolvida)</a>
+            <h3 class="px-4 pt-4 pb-2 text-xs font-semibold text-gray-500 uppercase">Simulados</h3>
+            <a href="#" onclick="showContent('simulado1', this, 'simulados')" class="dropdown-item simulado1-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Simulado 1</a>
+            <a href="#" onclick="showContent('simulado2', this, 'simulados')" class="dropdown-item simulado2-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Simulado 2</a>
+            <a href="#" onclick="showContent('simulado3', this, 'simulados')" class="dropdown-item simulado3-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Simulado 3</a>
+            <h3 class="px-4 pt-4 pb-2 text-xs font-semibold text-gray-500 uppercase">Outros</h3>
+            <a href="#" onclick="showContent('glossario', this, 'glossario')" class="nav-item glossario-link block px-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Glossário</a>
         </div>
     </header>
 
@@ -113,13 +136,13 @@
     <script>
         const contents = {
              home: `
-                <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
+                <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg animate-fade-in">
                     <h2 class="text-3xl font-bold mb-4 text-blue-400">Macroeconomia 2 - Universidade Federal de São Carlos (UFSCAR)</h2>
                     <p class="text-lg mb-6 text-gray-300">Este guia de estudos aprofundado foi desenvolvido para auxiliar na preparação para a disciplina de Macroeconomia II. Cada tópico teórico contém explicações detalhadas, exemplos práticos e uma lista de exercícios de fixação ao final para reforçar o aprendizado.</p>
                     <blockquote class="border-l-4 border-blue-500 bg-[#0d1117] p-4 rounded-r-lg mb-6">
                         <p class="text-blue-300">"Não se preocupe com suas dificuldades em matemática. Posso garantir que as minhas são ainda maiores." - Albert Einstein</p>
                     </blockquote>
-                    <p class="text-lg mb-6 text-gray-300">Navegue pelos tópicos na barra superior para começar seus estudos. Lembre-se, a chave para o sucesso é a prática constante. Resolva os exercícios de fixação e depois confira o gabarito comentado.</p>
+                    <p class="text-lg mb-6 text-gray-300">Navegue pelos tópicos na barra superior para começar seus estudos. Use os novos <strong>Simulados</strong> para testar seu conhecimento e consulte o <strong>Glossário</strong> sempre que tiver dúvidas sobre alguma sigla ou termo. Lembre-se, a chave para o sucesso é a prática constante.</p>
                 </div>
             `,
             solow_sem_progresso: `
@@ -150,6 +173,10 @@
                         <p class="text-center text-lg katex-display">$$PMgK = \\delta$$</p>
                         <p class="text-sm text-blue-300">Onde PMgK é o Produto Marginal do Capital (a inclinação de \\(f(k)\\)). Isso significa que, para maximizar o consumo, a economia deve poupar até o ponto em que o retorno do último real investido (PMgK) seja igual ao seu custo de manutenção (depreciação \\(\\delta\\)).</p>
                     </blockquote>
+                     <div class="mt-6 bg-sky-900/20 border border-sky-700 p-4 rounded-lg">
+                        <h4 class="font-bold text-sky-400">Dica Extra: Como encontrar a taxa de poupança da Regra de Ouro (\\(s_{ouro}\\))</h4>
+                        <p class="text-sm text-sky-300 mt-2">Para uma função Cobb-Douglas \\(Y=K^\\alpha N^{1-\\alpha}\\), o PMgK é \\(\\alpha K^{\\alpha-1}N^{1-\\alpha} = \\alpha (K/N)^{\\alpha-1} = \\alpha k^{\\alpha-1}\\). A condição da Regra de Ouro se torna \\(PMgK = \\alpha (k_{ouro})^{\\alpha-1} = \\delta + n + g_A\\). Usando isso e a condição de estado estacionário \\(s \cdot k^{\\alpha} = (\\delta+n+g_A)k\\), pode-se mostrar que a taxa de poupança que leva à Regra de Ouro é simplesmente \\(s_{ouro} = \\alpha\\), a participação do capital na renda.</p>
+                    </div>
                     <hr class="my-8 border-[#30363d]">
                     <h3 class="text-2xl font-semibold mb-4 text-blue-400">Exercícios de Fixação</h3>
                     <details class="mb-4 bg-[#0d1117] p-4 rounded-lg border border-[#30363d]">
@@ -509,100 +536,250 @@
                     </div>
                 </div>
             `,
+            simulado1: `
+                <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-400">Simulado 1</h2>
+                    
+                    <!-- Questão 1 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 1 (Teórica)</h3>
+                        <p class="text-gray-300">Discorra sobre a principal diferença entre o modelo de Solow com e sem progresso tecnológico no que tange ao crescimento da renda per capita no longo prazo. Por que a introdução do progresso tecnológico foi crucial para o realismo do modelo?</p>
+                    </div>
+
+                    <!-- Questão 2 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 2 (Teórica)</h3>
+                        <p class="text-gray-300">No contexto do modelo IS-LM com expectativas, explique como a credibilidade do Banco Central ao anunciar uma política monetária futura (por exemplo, um corte de juros) afeta a potência dessa política hoje. O que é "forward guidance"?</p>
+                    </div>
+                    
+                    <!-- Questão 3 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 3 (Cálculo)</h3>
+                        <p class="text-gray-300">Considere uma economia descrita pelo modelo de Solow com a seguinte função de produção por trabalhador efetivo: \\(\\hat{y} = \\sqrt{\\hat{k}}\\). A taxa de poupança (s) é de 28%, a taxa de depreciação (\\(\\delta\\)) é de 5%, a taxa de crescimento populacional (\\(g_N\\)) é de 2% e a taxa de progresso tecnológico (\\(g_A\\)) é de 3%. Calcule o nível de capital por trabalhador efetivo (\\(\\hat{k}^*\\)), o produto por trabalhador efetivo (\\(\\hat{y}^*\\)) e o consumo por trabalhador efetivo (\\(\\hat{c}^*\\)) no estado estacionário.</p>
+                    </div>
+
+                    <!-- Questão 4 -->
+                    <div class="p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 4 (Análise de Notícia)</h3>
+                        <blockquote class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r-lg mb-4">
+                            <h4 class="font-bold text-yellow-300">Notícia Fictícia (Junho de 2025): "Mercado reage com pessimismo a corte da Selic; juros futuros disparam."</h4>
+                            <p class="text-yellow-200 mt-2">"Após o Comitê de Política Monetária (Copom) do Banco Central do Brasil anunciar um corte de 0,25 p.p. na taxa Selic, para 9,75% a.a., o mercado financeiro reagiu de forma inesperada. A curva de juros futuros, que precifica as expectativas para a Selic nos próximos anos, registrou forte alta, com investidores passando a exigir prêmios maiores para títulos de longo prazo. Analistas apontam que a decisão do BC, embora buscando estimular a economia, foi percebida como complacente com a inflação, gerando desconfiança sobre a trajetória fiscal do país e a autonomia da autoridade monetária."</p>
+                        </blockquote>
+                        <p class="text-gray-300">Com base na notícia e nos conceitos do modelo IS-LM com expectativas, explique por que a curva de rendimento se inclinou para cima e qual o impacto provável dessa reação do mercado sobre o produto (Y) no presente.</p>
+                    </div>
+                </div>
+            `,
+            simulado2: `
+                <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-400">Simulado 2</h2>
+                    
+                    <!-- Questão 1 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 1 (Teórica)</h3>
+                        <p class="text-gray-300">Explique o conceito da "Regra de Ouro" de acumulação de capital no modelo de Solow. Uma economia que poupa "demais" (acima da taxa de poupança da Regra de Ouro) pode estar em uma situação pior, em termos de bem-estar, do que uma que poupa menos? Justifique.</p>
+                    </div>
+
+                    <!-- Questão 2 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 2 (Teórica)</h3>
+                        <p class="text-gray-300">Discorra sobre o conceito de "contração fiscal expansionista". Quais são as condições necessárias (principalmente relacionadas a expectativas) para que um corte nos gastos do governo (G) hoje resulte em um aumento do produto (Y) no presente?</p>
+                    </div>
+                    
+                    <!-- Questão 3 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 3 (Cálculo)</h3>
+                        <p class="text-gray-300">A taxa de crescimento do PIB (\\(g_Y\\)) de uma economia foi de 5% ao ano. A taxa de crescimento do estoque de capital (\\(g_K\\)) foi de 6% e a da força de trabalho (\\(g_N\\)) foi de 2%. Sabendo que a participação do capital na renda (\\(\\alpha\\)) é de 1/3, calcule o crescimento da Produtividade Total dos Fatores (PTF), também conhecido como Resíduo de Solow (\\(g_A\\)). Interprete o resultado.</p>
+                    </div>
+
+                    <!-- Questão 4 -->
+                    <div class="p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 4 (Análise de Notícia)</h3>
+                        <blockquote class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r-lg mb-4">
+                            <h4 class="font-bold text-yellow-300">Notícia Fictícia (Junho de 2025): "Governo detalha novo PAC e mercado se divide sobre impacto fiscal."</h4>
+                            <p class="text-yellow-200 mt-2">"O governo federal anunciou hoje os detalhes do novo Programa de Aceleração do Crescimento (PAC), prometendo investimentos de R$ 100 bilhões em infraestrutura para o próximo ano. O ministro da Fazenda garantiu que o programa será financiado com cortes em outras áreas, sem impacto no resultado primário. No entanto, agências de classificação de risco e parte do mercado financeiro expressaram ceticismo, apontando para a dificuldade de realizar os cortes prometidos e o risco de aumento da dívida pública."</p>
+                        </blockquote>
+                        <p class="text-gray-300">Analise os possíveis impactos do anúncio sobre a curva IS hoje em dois cenários distintos:
+                            <br>a) O mercado acredita na promessa do ministro e espera que o plano seja fiscalmente neutro e aumente a produtividade futura.
+                            <br>b) O mercado é cético, esperando que o plano leve a maiores déficits e juros futuros.
+                        </p>
+                    </div>
+                </div>
+            `,
+            simulado3: `
+                <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-400">Simulado 3</h2>
+                    
+                    <!-- Questão 1 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 1 (Teórica)</h3>
+                        <p class="text-gray-300">Com base na teoria do preço das ações, explique como uma notícia de que o Banco Central será forçado a manter os juros altos por mais tempo do que o esperado pode afetar o valor de mercado das empresas na bolsa de valores hoje. Detalhe os canais de transmissão.</p>
+                    </div>
+
+                    <!-- Questão 2 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 2 (Teórica)</h3>
+                        <p class="text-gray-300">Compare, utilizando a teoria da Renda Permanente, o impacto sobre o consumo agregado hoje de duas políticas de estímulo: (a) um corte de impostos anunciado como temporário, válido por apenas um ano; e (b) um corte de impostos de mesmo valor anual, mas anunciado como permanente.</p>
+                    </div>
+                    
+                    <!-- Questão 3 -->
+                    <div class="mb-8 p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 3 (Cálculo)</h3>
+                        <p class="text-gray-300">Você está avaliando comprar um título do governo que não paga cupons e promete um pagamento único de R$ 1.250,00 daqui a exatamente dois anos. A taxa de juros corrente para aplicações de um ano é de 10% a.a. (\\(i_t = 0.10\\)). O mercado espera que a taxa de juros de um ano, daqui a um ano, seja de 12% a.a. (\\(i^e_{t+1} = 0.12\\)). Qual é o Valor Presente Descontado (VPD) desse título hoje? Qual o preço máximo que você estaria disposto a pagar por ele?</p>
+                    </div>
+
+                    <!-- Questão 4 -->
+                    <div class="p-6 bg-[#0d1117] rounded-lg border border-[#30363d]">
+                        <h3 class="text-xl font-semibold text-blue-300 mb-2">Questão 4 (Análise de Notícia)</h3>
+                        <blockquote class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r-lg mb-4">
+                            <h4 class="font-bold text-yellow-300">Notícia Fictícia (Junho de 2025): "Ibovespa opera em forte queda com aumento da aversão ao risco fiscal."</h4>
+                            <p class="text-yellow-200 mt-2">"O principal índice da bolsa brasileira, o Ibovespa, caiu mais de 2% no pregão de hoje, com investidores estrangeiros liderando o movimento de venda. O gatilho foi a divulgação de dados fiscais piores que o esperado para o último mês, aumentando a percepção de risco sobre a capacidade do país em controlar suas contas públicas. O movimento de queda nas ações ocorre mesmo com a manutenção das projeções de lucro das empresas para o próximo trimestre."</p>
+                        </blockquote>
+                        <p class="text-gray-300">Utilizando a fórmula de precificação de ações (que depende de dividendos, juros e prêmio de risco), explique por que o Ibovespa pode cair mesmo que as expectativas de lucro (dividendos) das empresas não tenham se alterado. Qual componente da fórmula captura o sentimento descrito na notícia?</p>
+                    </div>
+                </div>
+            `,
+            glossario: `
+                <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-400">Glossário de Termos e Siglas</h2>
+                    <div class="space-y-6">
+                        <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">Y, K, N, A, L</h3>
+                            <p class="text-gray-400 mt-1">Variáveis centrais dos modelos de crescimento:<br>
+                            • <strong>Y:</strong> Produto (PIB)<br>
+                            • <strong>K:</strong> Estoque de Capital (máquinas, equipamentos)<br>
+                            • <strong>N (ou L):</strong> Número de Trabalhadores (mão de obra)<br>
+                            • <strong>A:</strong> Nível de Tecnologia (eficiência)</p>
+                        </div>
+                        <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">s, \\(\\delta\\), \\(g_A\\), \\(g_N\\)</h3>
+                            <p class="text-gray-400 mt-1">Parâmetros dos modelos de crescimento:<br>
+                            • <strong>s:</strong> Taxa de Poupança (a fração da renda que é poupada e investida)<br>
+                            • <strong>\\(\\delta\\):</strong> Taxa de Depreciação (o quanto do capital se desgasta a cada período)<br>
+                            • <strong>\\(g_A\\):</strong> Taxa de Crescimento do Progresso Tecnológico<br>
+                            • <strong>\\(g_N\\):</strong> Taxa de Crescimento da População/Força de Trabalho</p>
+                        </div>
+                         <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">Letras Minúsculas (k, y, c)</h3>
+                            <p class="text-gray-400 mt-1">Indicam variáveis em termos "por trabalhador". Ex: \\(k = K/N\\) é o capital por trabalhador. Simplifica a análise de bem-estar.</p>
+                        </div>
+                         <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">Variáveis com "Chapéu" (\\(\\hat{k}, \\hat{y}\\))</h3>
+                            <p class="text-gray-400 mt-1">Indicam variáveis em termos "por trabalhador efetivo". Ex: \\(\\hat{k} = K/(A \\cdot N)\\). Usado no modelo de Solow com tecnologia para encontrar o estado estacionário.</p>
+                        </div>
+                         <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">PTF (Produtividade Total dos Fatores)</h3>
+                            <p class="text-gray-400 mt-1">Mede o crescimento do produto que não é explicado pelo aumento na quantidade de insumos (capital e trabalho). É sinônimo de "Resíduo de Solow" e representa o crescimento da eficiência e da tecnologia (\\(g_A\\)).</p>
+                        </div>
+                        <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">PMgK (Produto Marginal do Capital)</h3>
+                            <p class="text-gray-400 mt-1">O produto adicional gerado por uma unidade extra de capital, mantendo os outros fatores constantes. É a inclinação da função de produção.</p>
+                        </div>
+                         <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">IS-LM</h3>
+                            <p class="text-gray-400 mt-1">Modelo que descreve o equilíbrio de curto prazo da economia.<br>
+                            • <strong>Curva IS:</strong> Equilíbrio no mercado de bens e serviços (Investimento = Poupança).<br>
+                            • <strong>Curva LM:</strong> Equilíbrio no mercado monetário (Oferta de Moeda = Demanda por Moeda).</p>
+                        </div>
+                        <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">VPD (Valor Presente Descontado)</h3>
+                            <p class="text-gray-400 mt-1">O valor hoje de um fluxo de pagamentos futuros. Usado para precificar ativos (títulos, ações) e para tomar decisões de investimento. É calculado descontando os valores futuros pela taxa de juros apropriada.</p>
+                        </div>
+                         <div class="p-4 bg-[#0d1117] rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-300">Variáveis com 'e' sobrescrito (\\(Y'^e, r'^e\\))</h3>
+                            <p class="text-gray-400 mt-1">Representam valores <strong>esperados</strong> para o futuro. Ex: \\(Y'^e\\) é o produto esperado para o próximo período.</p>
+                        </div>
+                    </div>
+                </div>
+            `,
         };
 
-        let currentActiveId = 'home';
+        let currentActiveGroup = 'home';
 
         function renderContent() {
              if (window.renderMathInElement) {
                 const mainContent = document.getElementById('main-content');
-                renderMathInElement(mainContent, {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '\\(', right: '\\)', display: false},
-                        {left: '\\[', right: '\\]', display: true}
-                    ],
-                    throwOnError: false
+                // Adiciona um pequeno delay para garantir que o DOM está pronto.
+                setTimeout(() => {
+                    renderMathInElement(mainContent, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '\\(', right: '\\)', display: false},
+                            {left: '\\[', right: '\\]', display: true}
+                        ],
+                        throwOnError: false
+                    });
+                }, 50);
+            }
+        }
+        
+        function updateActiveNav(id, group) {
+            currentActiveGroup = group;
+            // Remove a classe 'active' de todos os itens e botões
+            document.querySelectorAll('.nav-item, .dropdown-item, .dropdown-button').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Adiciona 'active' ao item clicado
+            document.querySelectorAll(`.${id}-link`).forEach(link => link.classList.add('active'));
+
+            // Adiciona 'active' ao botão do grupo correspondente (se for um dropdown)
+            if (group === 'topics' || group === 'simulados') {
+                document.querySelector(`.${group}-link`).classList.add('active');
+            }
+        }
+
+        function showContent(id, element, group) {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = contents[id] || '<div>Conteúdo não encontrado.</div>';
+            
+            updateActiveNav(id, group);
+            renderContent();
+            closeMenus();
+            window.scrollTo(0, 0);
+        }
+
+        function setupDropdown(buttonId, menuId) {
+            const button = document.getElementById(buttonId);
+            const menu = document.getElementById(menuId);
+            if(button && menu) {
+                 button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // Fecha outros menus abertos
+                    closeMenus(menuId);
+                    menu.classList.toggle('hidden');
                 });
             }
         }
         
-        function updateActiveNav(id, isTopLevel) {
-            // Remove a classe 'active' de todos os links de navegação
-            document.querySelectorAll('.nav-item, .dropdown-item').forEach(item => {
-                item.classList.remove('active');
+        function closeMenus(exceptMenuId = null) {
+            const allMenus = [
+                { menu: document.getElementById('mobile-menu') },
+                { menu: document.getElementById('topics-dropdown-menu'), id: 'topics-dropdown-menu' },
+                { menu: document.getElementById('simulados-dropdown-menu'), id: 'simulados-dropdown-menu' }
+            ];
+            allMenus.forEach(item => {
+                if (item.menu && item.id !== exceptMenuId) {
+                    item.menu.classList.add('hidden');
+                }
             });
-             // Remove a classe 'active' do botão do dropdown
-            document.getElementById('topics-dropdown-button').classList.remove('active');
-
-            if(isTopLevel) {
-                 // Adiciona 'active' ao link principal correto (desktop e mobile)
-                document.querySelectorAll(`.${id}-link`).forEach(link => link.classList.add('active'));
-            } else {
-                 // Adiciona 'active' ao item do dropdown e ao botão principal do dropdown
-                 document.querySelectorAll(`.${id}-link`).forEach(link => link.classList.add('active'));
-                 document.getElementById('topics-dropdown-button').classList.add('active');
-            }
-        }
-
-        function showContent(id, element, isTopLevel = false) {
-            const mainContent = document.getElementById('main-content');
-            mainContent.innerHTML = contents[id] || '<div>Conteúdo não encontrado.</div>';
-            currentActiveId = id;
-
-            // Renderiza as fórmulas matemáticas
-            renderContent();
-            
-            // Atualiza o estado ativo dos links de navegação
-            updateActiveNav(id, isTopLevel);
-
-            // Fecha menus abertos ao selecionar um item
-            closeMenus();
-            
-            // Rola a página para o topo
-            window.scrollTo(0, 0);
-        }
-
-        function closeMenus() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.getElementById('topics-dropdown-menu').classList.add('hidden');
         }
 
         document.addEventListener("DOMContentLoaded", function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const topicsDropdownButton = document.getElementById('topics-dropdown-button');
-            const topicsDropdownMenu = document.getElementById('topics-dropdown-menu');
-            const topicsDropdownContainer = document.getElementById('topics-dropdown-container');
 
-            // Toggle para menu mobile
             mobileMenuButton.addEventListener('click', (e) => {
                 e.stopPropagation();
+                closeMenus('mobile-menu'); // Fecha outros menus
                 mobileMenu.classList.toggle('hidden');
-                topicsDropdownMenu.classList.add('hidden'); // Garante que o dropdown feche
             });
+            
+            setupDropdown('topics-dropdown-button', 'topics-dropdown-menu');
+            setupDropdown('simulados-dropdown-button', 'simulados-dropdown-menu');
+            
+            window.addEventListener('click', () => closeMenus());
 
-            // Toggle para menu de tópicos
-            topicsDropdownButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                topicsDropdownMenu.classList.toggle('hidden');
-                mobileMenu.classList.add('hidden'); // Garante que o menu mobile feche
-            });
-
-            // Fecha os menus se clicar fora
-            window.addEventListener('click', (e) => {
-                if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-                    mobileMenu.classList.add('hidden');
-                }
-                if (!topicsDropdownContainer.contains(e.target)) {
-                    topicsDropdownMenu.classList.add('hidden');
-                }
-            });
-
-            // Carrega o conteúdo inicial
-            showContent('home', document.querySelector('.home-link'), true);
-             // Renderiza as fórmulas na primeira carga
-            renderContent();
+            showContent('home', document.querySelector('.home-link'), 'home');
         });
     </script>
 </body>
