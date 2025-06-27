@@ -89,7 +89,20 @@
                         </div>
                     </div>
                     
-                    <a href="#" onclick="showContent('exercicios', this, 'exercicios')" class="nav-item exercicios-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md transition-colors">Lista 2 (Resolvida)</a>
+                    <!-- Dropdown de Listas Resolvidas -->
+                    <div class="relative">
+                        <button id="listas-dropdown-button" class="dropdown-button nav-item listas-link px-3 py-2 text-gray-300 hover:bg-[#21262d] rounded-md flex items-center transition-colors">
+                            Listas Resolvidas
+                            <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        </button>
+                        <div id="listas-dropdown-menu" class="absolute right-0 mt-2 w-56 bg-[#161b22] border border-[#30363d] rounded-md shadow-lg hidden ring-1 ring-black ring-opacity-5">
+                           <div class="py-1">
+                                <a href="#" onclick="showContent('lista_10_junho', this, 'listas')" class="dropdown-item lista_10_junho-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Lista de 10 de Junho</a>
+                                <a href="#" onclick="showContent('lista_27_maio', this, 'listas')" class="dropdown-item lista_27_maio-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Lista de 27 de Maio</a>
+                                <a href="#" onclick="showContent('exercicios', this, 'listas')" class="dropdown-item exercicios-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Lista 2</a>
+                           </div>
+                        </div>
+                    </div>
 
                     <!-- Dropdown de Simulados -->
                     <div class="relative">
@@ -130,7 +143,11 @@
             <a href="#" onclick="showContent('consumo_investimento_expectativas', this, 'topics')" class="dropdown-item consumo_investimento_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Consumo, Inv. e Exp.</a>
             <a href="#" onclick="showContent('islm_expectativas', this, 'topics')" class="dropdown-item islm_expectativas-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Modelo IS-LM com Exp.</a>
             <h3 class="px-4 pt-4 pb-2 text-xs font-semibold text-gray-500 uppercase">Avaliações</h3>
-            <a href="#" onclick="showContent('exercicios', this, 'exercicios')" class="nav-item exercicios-link block px-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Lista 2 (Resolvida)</a>
+            <h4 class="px-4 pt-2 pb-1 text-sm font-semibold text-gray-400">Listas Resolvidas</h4>
+            <a href="#" onclick="showContent('lista_10_junho', this, 'listas')" class="dropdown-item lista_10_junho-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Lista de 10 de Junho</a>
+            <a href="#" onclick="showContent('lista_27_maio', this, 'listas')" class="dropdown-item lista_27_maio-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Lista de 27 de Maio</a>
+            <a href="#" onclick="showContent('exercicios', this, 'listas')" class="dropdown-item exercicios-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Lista 2</a>
+             <h4 class="px-4 pt-2 pb-1 text-sm font-semibold text-gray-400">Simulados</h4>
             <a href="#" onclick="showContent('simulado1', this, 'simulados')" class="dropdown-item simulado1-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Simulado 1</a>
             <a href="#" onclick="showContent('simulado2', this, 'simulados')" class="dropdown-item simulado2-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Simulado 2</a>
             <a href="#" onclick="showContent('simulado3', this, 'simulados')" class="dropdown-item simulado3-link block pl-8 pr-4 py-3 text-base text-gray-300 hover:bg-[#21262d]">Simulado 3</a>
@@ -373,6 +390,111 @@
                     </div>
                 </div>
             `,
+            lista_27_maio: `
+                <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-blue-400">Resolução da Lista de 27 de Maio de 2025</h2>
+                    
+                    <!-- Questão 1 -->
+                    <div class="mb-8 border-b border-[#30363d] pb-8">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 1</h3>
+                        <p class="mb-4 font-medium text-gray-300">(ANPEC 2013, 2015, 2016, 2020) Classifique as afirmativas como Verdadeiras (V) ou Falsas (F):</p>
+                        <div class="space-y-4 text-gray-300">
+                            <p><strong>a) No Modelo de Solow, sem crescimento populacional e progresso tecnológico, o nível de renda per capita dos países no estado estacionário depende do nível inicial de capital por trabalhador da economia.</strong><br><span class="font-bold text-red-500">FALSO.</span> O nível de renda per capita no estado estacionário (\\(y^*\\)) depende dos parâmetros do modelo (taxa de poupança \\(s\\), taxa de depreciação \\(\\delta\\)) e da forma da função de produção, mas não do nível inicial de capital (\\(k_0\\)). O nível inicial de capital determina apenas o ponto de partida da economia; todas as economias com os mesmos parâmetros convergirão para o mesmo estado estacionário, independentemente de onde começaram.</p>
+                            <p><strong>b) A acumulação de capital, por si só, não é capaz de sustentar permanentemente o crescimento do produto per capita no modelo de Solow.</strong><br><span class="font-bold text-green-500">VERDADEIRO.</span> Este é um dos resultados centrais do modelo. Devido aos rendimentos marginais decrescentes do capital, cada unidade adicional de capital gera um acréscimo cada vez menor no produto. Eventualmente, a economia atinge um estado estacionário onde o investimento é apenas suficiente para cobrir a depreciação, e o crescimento per capita cessa.</p>
+                             <p><strong>c) Sem progresso tecnológico, a economia converge para uma taxa de crescimento estável, em que é zero o crescimento da renda per capita.</strong><br><span class="font-bold text-green-500">VERDADEIRO.</span> No estado estacionário do modelo de Solow sem progresso tecnológico, o capital por trabalhador (\\(k\\)) e o produto por trabalhador (\\(y\\)) são constantes. Portanto, a taxa de crescimento da renda per capita é, de fato, zero.</p>
+                             <p><strong>d) As economias com maiores taxas de poupança terão maiores taxas de crescimento econômico em estado estacionário.</strong><br><span class="font-bold text-red-500">FALSO.</span> Economias com maiores taxas de poupança terão <strong>níveis</strong> mais altos de capital e renda per capita no estado estacionário, mas não taxas de crescimento maiores. No estado estacionário, a taxa de crescimento da renda per capita é determinada apenas pelo progresso tecnológico (que é zero neste caso).</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 2 -->
+                    <div class="mb-8 border-b border-[#30363d] pb-8">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 2</h3>
+                        <p class="mb-4 font-medium text-gray-300">Suponha as seguintes características para uma economia que se encontra no estado de crescimento equilibrado (estado estacionário):<br>
+                        • Função de Produção: \\(Y = K^{0.3}(AN)^{0.7}\\)<br>
+                        • Crescimento do número de trabalhadores (ou populacional): \\(g_N = 2\\%\\) ao ano<br>
+                        • Crescimento do estoque de capital: \\(g_K = 6\\%\\) ao ano</p>
+                        
+                        <p class="mb-4 text-gray-300"><strong>Resposta:</strong><br>
+                        Em estado estacionário, as taxas de crescimento das variáveis agregadas (como Produto Total Y e Capital Total K) são constantes e iguais à soma da taxa de crescimento populacional (\\(g_N\\)) e da taxa de progresso tecnológico (\\(g_A\\)).
+                        $$ g_Y = g_K = g_A + g_N $$
+                        As taxas de crescimento das variáveis por trabalhador (como y = Y/N e k = K/N) são constantes e iguais à taxa de progresso tecnológico (\\(g_A\\)).
+                        $$ g_y = g_k = g_A $$
+                        Com os dados fornecidos, podemos resolver o sistema:</p>
+
+                        <div class="space-y-4 text-gray-300 mt-4">
+                            <p><strong>a) Quais as taxas de crescimento do capital por trabalhador e do produto por trabalhador?</strong><br>
+                            Sabemos que \\(g_K = g_A + g_N\\). Substituindo os valores: \\(6\\% = g_A + 2\\%\\). Isolando \\(g_A\\), encontramos que a taxa de progresso tecnológico é \\(g_A = 4\\%\\).<br>
+                            A taxa de crescimento do capital por trabalhador (\\(g_k\\)) é igual a \\(g_A\\). Portanto, \\(g_k = 4\\%\\).<br>
+                            A taxa de crescimento do produto por trabalhador (\\(g_y\\)) também é igual a \\(g_A\\). Portanto, \\(g_y = 4\\%\\).</p>
+                            
+                            <p><strong>b) Qual o resíduo de Solow e o que ele significa?</strong><br>
+                            O resíduo de Solow é a parte do crescimento do produto que não pode ser explicada pelo crescimento dos insumos (capital e trabalho). É a medida do nosso desconhecimento, atribuída ao progresso tecnológico (\\(g_A\\)). No item anterior, calculamos que \\(g_A = 4\\%\\).<br>
+                            <strong>Significado:</strong> 4% do crescimento econômico advém de melhorias na eficiência, conhecimento, inovação e tecnologia, e não apenas do uso de mais máquinas ou mais pessoas.</p>
+
+                            <p><strong>c) Qual a taxa de progresso tecnológico?</strong><br>
+                            Conforme calculado no item (a), a taxa de progresso tecnológico (\\(g_A\\)) é de <strong>4% ao ano</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 3 -->
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 3</h3>
+                        <p class="mb-4 font-medium text-gray-300">(ANPEC 2019) Considere o Modelo de Solow com \\(Y=K^{1/2}(AN)^{1/2}\\), \\(s=14\\%\\), \\(\\delta=8\\%\\), \\(g_N=2\\%\\) e \\(g_A=4\\%\\). Julgue as afirmativas:</p>
+                        <p class="text-gray-400 mb-4">Primeiro, vamos encontrar o estado estacionário. A função de produção por trabalhador efetivo é \\(\\hat{y} = \\sqrt{\\hat{k}}\\). A condição de estado estacionário é \\(s \\cdot \\hat{f}(\\hat{k}) = (\\delta + g_N + g_A)\\hat{k}\\).
+                        $$ 0.14 \\cdot \\sqrt{\\hat{k}} = (0.08 + 0.02 + 0.04) \\cdot \\hat{k} $$
+                        $$ 0.14 \\cdot \\sqrt{\\hat{k}} = 0.14 \\cdot \\hat{k} $$
+                        Dividindo ambos os lados por 0.14 e depois por \\(\\sqrt{\\hat{k}}\\) (assumindo \\(\\hat{k} > 0\\)), temos:
+                        $$ 1 = \\sqrt{\\hat{k}} \\implies \\hat{k}^* = 1 $$
+                        Com \\(\\hat{k}^* = 1\\), o produto por trabalhador efetivo no estado estacionário é \\(\\hat{y}^* = \\sqrt{1} = 1\\).</p>
+                        <div class="space-y-4 text-gray-300">
+                            <p><strong>a) O nível de estoque de capital por trabalhador efetivo no estado estacionário é igual a 4.</strong><br><span class="font-bold text-red-500">FALSO.</span> Como calculado acima, \\(\\hat{k}^* = 1\\).</p>
+                            <p><strong>b) O nível de produto por trabalhador efetivo no estado estacionário é 2.</strong><br><span class="font-bold text-red-500">FALSO.</span> Como calculado acima, \\(\\hat{y}^* = 1\\).</p>
+                            <p><strong>c) A taxa de crescimento do produto é 6%.</strong><br><span class="font-bold text-green-500">VERDADEIRO.</span> A taxa de crescimento do produto total (Y) no estado estacionário é \\(g_Y = g_A + g_N = 4\\% + 2\\% = 6\\%\\).</p>
+                            <p><strong>d) A taxa de crescimento do produto por trabalhador efetivo é nula.</strong><br><span class="font-bold text-green-500">VERDADEIRO.</span> Por definição, no estado estacionário, as variáveis por trabalhador efetivo (\\(\\hat{k}\\) e \\(\\hat{y}\\)) são constantes, logo, suas taxas de crescimento são nulas.</p>
+                            <p><strong>e) A taxa de crescimento do produto por trabalhador é 4%.</strong><br><span class="font-bold text-green-500">VERDADEIRO.</span> A taxa de crescimento do produto por trabalhador (\\(y = Y/N\\)) no estado estacionário é igual à taxa de progresso tecnológico, \\(g_y = g_A = 4\\%\\).</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            lista_10_junho: `
+                 <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4 text-blue-400">Resolução da Lista de 10 de Junho de 2025</h2>
+                    
+                    <!-- Questão 1 -->
+                    <div class="mb-8 border-b border-[#30363d] pb-8">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 1</h3>
+                         <blockquote class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r-lg mb-4">
+                            <h4 class="font-bold text-yellow-300">Citação (BBC Brasil, 15 de junho de 2011):</h4>
+                            <p class="text-yellow-200 mt-2">"Um indicador de mercado atentamente acompanhado por analistas financeiros - a curva de rendimento de títulos públicos - poderia indicar problemas à vista na economia brasileira... O jornal observa que existe uma teoria amplamente aceita de que juros nos títulos de curto prazo mais altos do que nos de longo prazo são a indicação de que a economia do país ruma a uma forte desaceleração ou até mesmo uma recessão."</p>
+                        </blockquote>
+                        <div class="space-y-4 text-gray-300 mt-4">
+                            <p><strong>a) Explique, utilizando o modelo ISLM, por que a curva de rendimento com esse formato pode indicar uma recessão.</strong><br>
+                            A taxa de juros de um título de longo prazo pode ser aproximada pela média das taxas de juros de curto prazo atuais e futuras esperadas. Uma <strong>curva de rendimento invertida</strong> (juros de curto prazo > juros de longo prazo) implica que o mercado espera que as taxas de juros de curto prazo no futuro sejam <strong>menores</strong> do que são hoje. No contexto do modelo IS-LM, o Banco Central reduz as taxas de juros para combater uma recessão (um deslocamento da IS para a esquerda). Portanto, a expectativa de que o BC cortará os juros no futuro é um forte sinal de que o mercado espera uma desaceleração econômica ou uma recessão à frente.</p>
+                            
+                            <p><strong>b) Na mesma notícia há a afirmativa que alguns analistas discordam que a curva de rendimento dos títulos públicos brasileiros indique uma recessão futura. Caso não indique uma recessão, que outro evento a curva de rendimento com essa inclinação pode indicar? Explique utilizando o modelo ISLM.</strong><br>
+                             Um evento alternativo seria um <strong>choque de credibilidade do Banco Central</strong>. Suponha que o BC elevou a taxa de juros de curto prazo hoje para combater a inflação, mas o mercado acredita que essa alta não se sustentará e que a autoridade monetária será forçada a reverter o curso e cortar os juros no futuro (talvez por pressões políticas ou por uma avaliação de que a inflação cairá mais rápido do que o BC prevê). Nesse caso, a curva se inverte não por uma expectativa de recessão, mas por uma expectativa de que a política monetária atual será revertida. Outra possibilidade é um choque de "fuga para a qualidade", onde uma crise externa leva investidores a comprar massivamente títulos de longo prazo brasileiros (considerados seguros), elevando seu preço e derrubando seu rendimento, sem necessariamente alterar as expectativas sobre o PIB futuro.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 2 -->
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 2</h3>
+                        <blockquote class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r-lg mb-4">
+                            <h4 class="font-bold text-yellow-300">Notícia (Valor, 09/06/2025): "Juros longos operam pressionados após anúncio de medidas fiscais"</h4>
+                            <p class="text-yellow-200 mt-2">"Segundo participantes do mercado, a ausência de ajustes estruturantes no sentido de reduzir as despesas explica boa parte do aumento do prêmio de risco observado hoje na ponta longa da curva..."</p>
+                        </blockquote>
+                        <p class="mb-4 font-medium text-gray-300">Considerando a notícia e o modelo IS-LM com expectativas, explique o comportamento da curva de rendimentos da economia brasileira relacionando as políticas fiscal e monetária.</p>
+                        <div class="space-y-4 text-gray-300">
+                            <p>A notícia ilustra perfeitamente como as expectativas sobre as políticas futuras afetam os preços dos ativos (juros longos) hoje.</p>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li><strong>Canal da Política Fiscal:</strong> A percepção de "ausência de ajustes estruturantes" e a "decepção dos agentes com as medidas fiscais anunciadas" geram a expectativa de que o governo terá dificuldades para controlar a dívida pública. Isso pode levar a um cenário futuro de impostos mais altos (\\(T'^e \\uparrow\\)) ou inflação mais alta (exigindo juros futuros mais altos, \\(r'^e \\uparrow\\)). Para se protegerem desse risco, os investidores exigem um "prêmio de risco" maior para comprar títulos de longo prazo, elevando os juros longos hoje.</li>
+                                <li><strong>Canal da Política Monetária:</strong> O texto menciona a divisão no Copom e as expectativas para a reunião do BC. As ações e comunicações do Banco Central moldam as expectativas sobre a taxa de juros de curto prazo futura (\\(r'^e\\)). Se o mercado percebe um risco fiscal maior (do canal 1), ele também pode esperar que o BC precise manter os juros mais altos no futuro para controlar a inflação decorrente. Essa expectativa de \\(r'^e\\) mais alto eleva diretamente os juros longos hoje.</li>
+                            </ol>
+                            <p class="mt-4"><strong>Conclusão:</strong> A pressão nos juros longos é resultado da interação desses dois canais. A incerteza fiscal eleva o prêmio de risco e cria a expectativa de que a política monetária futura precisará ser mais contracionista. Ambos os efeitos empurram os juros de longo prazo para cima, tornando a curva de rendimento mais inclinada, mesmo que a taxa de juros de curto prazo (Selic) esteja estável ou caindo.</p>
+                        </div>
+                    </div>
+                </div>
+            `,
             simulado1: `
                 <div class="bg-[#161b22] p-8 rounded-lg border border-[#30363d] shadow-lg">
                     <h2 class="text-3xl font-bold mb-6 text-blue-400">Simulado 1</h2>
@@ -608,7 +730,7 @@
         function updateActiveNav(id, group) {
             document.querySelectorAll('.nav-item, .dropdown-item, .dropdown-button').forEach(item => item.classList.remove('active'));
             document.querySelectorAll(`.${id}-link`).forEach(link => link.classList.add('active'));
-            if (group === 'topics' || group === 'simulados') {
+            if (group === 'topics' || group === 'simulados' || group === 'listas') {
                 const button = document.querySelector(`.${group}-link`);
                 if(button && button.classList.contains('dropdown-button')) button.classList.add('active');
             }
@@ -651,6 +773,7 @@
             const allMenus = [
                 { menu: document.getElementById('mobile-menu'), id: 'mobile-menu' },
                 { menu: document.getElementById('topics-dropdown-menu'), id: 'topics-dropdown-menu' },
+                { menu: document.getElementById('listas-dropdown-menu'), id: 'listas-dropdown-menu' },
                 { menu: document.getElementById('simulados-dropdown-menu'), id: 'simulados-dropdown-menu' }
             ];
             allMenus.forEach(item => {
@@ -672,6 +795,7 @@
             });
             
             setupDropdown('topics-dropdown-button', 'topics-dropdown-menu');
+            setupDropdown('listas-dropdown-button', 'listas-dropdown-menu');
             setupDropdown('simulados-dropdown-button', 'simulados-dropdown-menu');
             
             // Fecha os menus se clicar em qualquer lugar da tela
