@@ -85,7 +85,7 @@
                                 <a href="#" onclick="showContent('mercado_financeiro_expectativas', this, 'topics')" class="dropdown-item mercado_financeiro_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Mercado Financeiro e Exp.</a>
                                 <a href="#" onclick="showContent('consumo_investimento_expectativas', this, 'topics')" class="dropdown-item consumo_investimento_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Consumo, Inv. e Exp.</a>
                                 <a href="#" onclick="showContent('islm_expectativas', this, 'topics')" class="dropdown-item islm_expectativas-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Modelo IS-LM com Exp.</a>
-                           </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -100,7 +100,7 @@
                                 <a href="#" onclick="showContent('lista_10_junho', this, 'listas')" class="dropdown-item lista_10_junho-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Lista de 10 de Junho</a>
                                 <a href="#" onclick="showContent('lista_27_maio', this, 'listas')" class="dropdown-item lista_27_maio-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Lista de 27 de Maio</a>
                                 <a href="#" onclick="showContent('exercicios', this, 'listas')" class="dropdown-item exercicios-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Lista 2</a>
-                           </div>
+                            </div>
                         </div>
                     </div>
 
@@ -115,7 +115,7 @@
                                 <a href="#" onclick="showContent('simulado1', this, 'simulados')" class="dropdown-item simulado1-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Simulado 1</a>
                                 <a href="#" onclick="showContent('simulado2', this, 'simulados')" class="dropdown-item simulado2-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Simulado 2</a>
                                 <a href="#" onclick="showContent('simulado3', this, 'simulados')" class="dropdown-item simulado3-link block px-4 py-2 text-sm text-gray-300 hover:bg-[#21262d]">Simulado 3</a>
-                           </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -334,15 +334,34 @@
                             <p><strong>e) Quanto maior a taxa de poupança de uma economia, maior será a renda per capita em estado estacionário.</strong><br><span class="font-bold text-green-500">VERDADEIRO.</span> Uma taxa de poupança (\\(s\\)) mais elevada aumenta o nível do capital por trabalhador (efetivo) no estado estacionário. Como o produto por trabalhador (efetivo) é uma função crescente do capital por trabalhador (efetivo), um \\(s\\) mais alto leva a um nível de renda per capita maior no estado estacionário. A taxa de poupança afeta o <strong>nível</strong> da renda, mas não sua <strong>taxa de crescimento</strong> de longo prazo.</p>
                         </div>
                     </div>
-                    <!-- Questão 2 -->
+                    <!-- Questão 2 (Corrigida) -->
                     <div class="mb-8 border-b border-[#30363d] pb-8">
-                        <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 2</h3>
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 2 (Corrigido)</h3>
                         <p class="mb-4 font-medium text-gray-300">Calcule e interprete o Resíduo de Solow (PTF) para uma economia com função de produção \\(Y=K^{1/2}(AN)^{1/2}\\), \\(s=14\\%\\), \\(\\delta=8\\%\\), \\(g_N=2\\%\\) e \\(g_A=4\\%\\).</p>
-                        <p class="mb-4 text-gray-300">O Resíduo de Solow, ou crescimento da Produtividade Total dos Fatores (PTF), é a parte do crescimento do produto não explicada pelo crescimento dos insumos (capital e trabalho). No modelo de Solow, o Resíduo de Solow é, por definição, a taxa de progresso tecnológico, \\(g_A\\).</p>
-                        <p class="mb-4 text-gray-300">Portanto, os dados sobre poupança (\\(s\\)), depreciação (\\(\\delta\\)) e crescimento do trabalho (\\(g_N\\)) não são necessários para encontrar o valor do Resíduo de Solow, que é dado diretamente no enunciado.</p>
-                        <div class="bg-[#0d1117] p-4 rounded-md my-4 border border-[#30363d]">
-                            <p class="text-lg text-gray-200"><strong>Resíduo de Solow (crescimento da PTF) = \\(g_A = 4\\%\\) ao ano.</strong></p>
-                            <p class="mt-2 text-gray-300"><strong>Interpretação:</strong> Isso significa que 4% do crescimento do produto total da economia a cada ano vem de melhorias na eficiência, inovação e tecnologia, e não do simples acúmulo de mais capital ou da contratação de mais trabalhadores.</p>
+                        <div class="space-y-4 text-gray-300">
+                            <p>O Resíduo de Solow é a parcela do crescimento do produto que não é explicada pelo crescimento dos insumos capital e trabalho. Para calculá-lo, usamos a contabilidade do crescimento.</p>
+                            <p><strong>1. Identificar as taxas de crescimento no estado estacionário:</strong></p>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Taxa de crescimento do trabalho (\\(g_N\\)) = 2% = 0,02.</li>
+                                <li>Taxa de progresso tecnológico (\\(g_A\\)) = 4% = 0,04.</li>
+                                <li>No estado estacionário, o produto total (Y) e o capital total (K) crescem à mesma taxa que o trabalho efetivo (AN). Portanto, a taxa de crescimento de Y e K é: \\(g_Y = g_K = g_A + g_N = 0,04 + 0,02 = 0,06\\) (ou 6%).</li>
+                            </ul>
+                            <p><strong>2. Aplicar a fórmula da contabilidade do crescimento:</strong></p>
+                            <p>A fórmula para o Resíduo de Solow (vamos chamar de \\(g_{RS}\\)) é:
+                            <blockquote class="bg-[#0d1117] p-4 rounded-md my-2 text-center text-lg katex-display border border-[#30363d]">
+                                $$g_{RS} = g_Y - [\\alpha \\cdot g_K + (1 - \\alpha) \\cdot g_N]$$
+                            </blockquote>
+                            Onde \\(\\alpha\\) é a participação do capital na produção. Para a função \\(Y = K^{1/2} (AN)^{1/2}\\), a participação do capital é \\(\\alpha = 1/2\\).</p>
+                            <p><strong>3. Substituir os valores:</strong></p>
+                            <blockquote class="bg-[#0d1117] p-4 rounded-md my-2 text-center text-lg katex-display border border-[#30363d]">
+                                $$g_{RS} = 0,06 - [0,5 \\cdot 0,06 + 0,5 \\cdot 0,02]$$
+                                $$g_{RS} = 0,06 - [0,03 + 0,01]$$
+                                $$g_{RS} = 0,06 - 0,04 = 0,02$$
+                            </blockquote>
+                            <div class="bg-[#0d1117] p-4 rounded-md my-4 border border-green-700">
+                                <p class="text-lg text-green-300"><strong>Resíduo de Solow (crescimento da PTF) = 2% ao ano.</strong></p>
+                                <p class="mt-2 text-gray-300"><strong>Interpretação:</strong> O produto total (Y) cresce a 6% ao ano. Desse crescimento, 4 pontos percentuais são explicados pelo aumento dos insumos (3% pelo capital e 1% pelo trabalho). Os 2% restantes são o "resíduo", atribuído a ganhos de eficiência e progresso tecnológico. Note que, para esta função específica, o resíduo é igual a \\( (1/2) \\cdot g_A \\), pois o termo de tecnologia \\(A\\) está elevado a 1/2 na função de produção.</p>
+                            </div>
                         </div>
                     </div>
                     <!-- Questão 3 -->
@@ -356,7 +375,7 @@
                            <p><strong>d) Pode-se afirmar que um aumento marginal permanente na taxa de poupança reduz o consumo por trabalhador de forma igualmente permanente.</strong><br><span class="font-bold text-red-500">FALSO.</span> Um aumento na taxa de poupança (\\(s\\)) sempre reduz o consumo no curto prazo. No entanto, no longo prazo, o efeito sobre o consumo depende se a economia está abaixo ou acima do nível de capital da "Regra de Ouro". Se a economia estiver abaixo do nível da Regra de Ouro, um aumento em \\(s\\) levará a um consumo por trabalhador <strong>maior</strong> no novo estado estacionário.</p>
                         </div>
                     </div>
-                     <!-- Questão 4 a 8 -->
+                     <!-- Questões 4 a 8 -->
                     <div class="mb-8">
                         <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questões 4 a 8 - Modelo IS-LM com Expectativas</h3>
                         <p class="mb-4 text-gray-300">As questões a seguir são resolvidas com base no Modelo IS-LM com Expectativas.</p>
@@ -464,9 +483,9 @@
                     <div class="mb-8 border-b border-[#30363d] pb-8">
                         <h3 class="text-2xl font-semibold mb-3 text-blue-300">Questão 1</h3>
                          <blockquote class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r-lg mb-4">
-                            <h4 class="font-bold text-yellow-300">Citação (BBC Brasil, 15 de junho de 2011):</h4>
-                            <p class="text-yellow-200 mt-2">"Um indicador de mercado atentamente acompanhado por analistas financeiros - a curva de rendimento de títulos públicos - poderia indicar problemas à vista na economia brasileira... O jornal observa que existe uma teoria amplamente aceita de que juros nos títulos de curto prazo mais altos do que nos de longo prazo são a indicação de que a economia do país ruma a uma forte desaceleração ou até mesmo uma recessão."</p>
-                        </blockquote>
+                             <h4 class="font-bold text-yellow-300">Citação (BBC Brasil, 15 de junho de 2011):</h4>
+                             <p class="text-yellow-200 mt-2">"Um indicador de mercado atentamente acompanhado por analistas financeiros - a curva de rendimento de títulos públicos - poderia indicar problemas à vista na economia brasileira... O jornal observa que existe uma teoria amplamente aceita de que juros nos títulos de curto prazo mais altos do que nos de longo prazo são a indicação de que a economia do país ruma a uma forte desaceleração ou até mesmo uma recessão."</p>
+                         </blockquote>
                         <div class="space-y-4 text-gray-300 mt-4">
                             <p><strong>a) Explique, utilizando o modelo ISLM, por que a curva de rendimento com esse formato pode indicar uma recessão.</strong><br>
                             A taxa de juros de um título de longo prazo pode ser aproximada pela média das taxas de juros de curto prazo atuais e futuras esperadas. Uma <strong>curva de rendimento invertida</strong> (juros de curto prazo > juros de longo prazo) implica que o mercado espera que as taxas de juros de curto prazo no futuro sejam <strong>menores</strong> do que são hoje. No contexto do modelo IS-LM, o Banco Central reduz as taxas de juros para combater uma recessão (um deslocamento da IS para a esquerda). Portanto, a expectativa de que o BC cortará os juros no futuro é um forte sinal de que o mercado espera uma desaceleração econômica ou uma recessão à frente.</p>
